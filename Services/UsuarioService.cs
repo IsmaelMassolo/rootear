@@ -127,4 +127,27 @@ public class UsuarioService : IUsuarioService
             throw new Exception(ex.Message);
         }
     }
+
+    public async Task<Usuario> GetPorId(int idUsuario)
+    {
+        try
+        {
+            var response = await client.GetAsync($"{Constants.ObtenerUsuarioEndpoint}/{idUsuario}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                var json = await response.Content.ReadAsStringAsync();
+                return JsonSerializer.Deserialize<Usuario>(json, options); // Usa opciones de serialización.
+
+
+            }
+            return null;
+        }
+        catch (Exception ex)
+        {
+            // Manejo de excepción según necesidad
+            throw new Exception("Error al obtener el usuario", ex);
+        }
+    }
+
 }

@@ -30,6 +30,13 @@ namespace rootear.mvvm.ViewModels
         }
 
         [RelayCommand]
+        public async Task GoToPerfilUsuario()
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(new UsuarioModificarPage());
+        }
+
+
+        [RelayCommand]
         public async Task GoToAcerca()
         {
             await Application.Current.MainPage.Navigation.PushAsync(new AcercaPage());

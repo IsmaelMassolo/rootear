@@ -60,37 +60,5 @@ namespace rootear.mvvm.ViewModels
             }
         }
 
-        [RelayCommand]
-        private async Task GuardarCambiosAsync()
-        {
-            if (usuario == null)
-            {
-                await Application.Current.MainPage.DisplayAlert("Error", "No hay un usuario para guardar los cambios.", "OK");
-                return;
-            }
-
-            try
-            {
-                // Lógica para actualizar el usuario en el servicio
-                bool result = await _usuarioService.ActualizarUsuarioAsync(usuario);
-
-                if (result)
-                {
-                    await Application.Current.MainPage.DisplayAlert("Éxito", "Usuario actualizado correctamente.", "OK");
-
-                    // Navegar de regreso a la página anterior
-                    await Application.Current.MainPage.Navigation.PopAsync();
-                }
-                else
-                {
-                    await Application.Current.MainPage.DisplayAlert("Error", "No se pudo actualizar el usuario.", "OK");
-                }
-            }
-            catch (Exception ex)
-            {
-                await Application.Current.MainPage.DisplayAlert("Error", $"Ocurrió un error: {ex.Message}", "OK");
-            }
-        }
-
     }
 }

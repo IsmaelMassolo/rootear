@@ -11,4 +11,5 @@ public interface IUsuarioService
     Task<bool> SubirImagen(UsuarioDTO registro);
     Task<bool> DeshabilitarUsuarioAsync(Usuario usuario);
     Task<bool> ActualizarUsuarioAsync(Usuario usuario);
+    Task<Usuario> GetPorId(int idUsuario);
 }

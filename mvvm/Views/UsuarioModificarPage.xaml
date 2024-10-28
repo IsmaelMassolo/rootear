@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:rootear.mvvm.ViewModels"
+             xmlns:models="clr-namespace:rootear.mvvm.Models"
+             x:Class="rootear.mvvm.Views.UsuarioModificarPage"
+             x:DataType="vm:UsuarioModificarViewModel"
+             BackgroundColor="DarkGrey"
+             
+             Title="{Binding Title}">
+
+
+    <ScrollView>
+        <VerticalStackLayout Margin="15">
+            <Grid ColumnDefinitions=".4*,.7*" RowDefinitions="*,*,*,*,*,*,*,*,*,*,*,*,*,*,*" RowSpacing="2">
+
+                <Label Margin="0,5,0,20" Text="Tu perfil" FontSize="Large" HorizontalOptions="Center" Grid.ColumnSpan="2" TextColor="BlueViolet" />
+
+                <Label Text="Nombre" Grid.Column="0" Grid.Row="1" VerticalOptions="Center" />
+                <Entry Grid.Column="1" Grid.Row="1" VerticalOptions="Center" Text="{Binding Usuario.Nombre}" TextColor="BlueViolet"/>
+
+                <Label Text="Apellido" Grid.Column="0" Grid.Row="2" VerticalOptions="Center"/>
+                <Entry Grid.Column="1" Grid.Row="2" VerticalOptions="Center" Text="{Binding Usuario.Apellido}" TextColor="BlueViolet"/>
+
+                <Label Text="UsuarioNombre" Grid.Column="0" Grid.Row="3" VerticalOptions="Center"/>
+                <Entry Grid.Column="1" Grid.Row="3" VerticalOptions="Center" Text="{Binding Usuario.UsuarioNombre}" TextColor="BlueViolet"/>
+
+                <Label Text="Email" Grid.Column="0" Grid.Row="4" VerticalOptions="Center"/>
+                <Entry Grid.Column="1" Grid.Row="4" VerticalOptions="Center" Text="{Binding Usuario.Email}" TextColor="BlueViolet"/>
+
+                <Label Text="Contrasena" Grid.Column="0" Grid.Row="5" VerticalOptions="Center"/>
+                <Entry Grid.Column="1" Grid.Row="5" VerticalOptions="Center" Text="{Binding Usuario.Contrasena}" IsPassword="True" TextColor="BlueViolet"/>
+
+                <Label Text="Celular" Grid.Column="0" Grid.Row="6" VerticalOptions="Center"/>
+                <Entry Grid.Column="1" Grid.Row="6" VerticalOptions="Center" Text="{Binding Usuario.Celular}" TextColor="BlueViolet"/>
+
+                <Label Text="Dni" Grid.Column="0" Grid.Row="7" VerticalOptions="Center"/>
+                <Entry Grid.Column="1" Grid.Row="7" VerticalOptions="Center" Text="{Binding Usuario.Dni}" TextColor="BlueViolet"/>
+
+                <Label Text="FechaNac" Grid.Column="0" Grid.Row="8" VerticalOptions="Center"/>
+                <DatePicker Grid.Column="1" Grid.Row="8" VerticalOptions="Center" Date="{Binding Usuario.FechaNac}" TextColor="BlueViolet"/>
+
+                <Label Text="Rol" Grid.Column="0" Grid.Row="9" VerticalOptions="Center"/>
+                <Picker Grid.Column="1" Grid.Row="9"
+
+                        ItemsSource="{Binding Roles}"
+                        SelectedItem="{Binding Usuario.Rol}"
+                        VerticalOptions="Center" 
+                        TextColor="BlueViolet"/>
+                
+                
+                    <Image Source="{Binding Usuario.RutaImagen}" Margin="0,10" HeightRequest="150" HorizontalOptions="Center" Grid.Row="11" Grid.ColumnSpan="2" />
+
+                <Button 
+            Command="{Binding GuardarCambiosCommand}"
+            Text="Grabar" 
+            Grid.Row="13" 
+            Grid.ColumnSpan="2" />
+                <Button 
+            Command="{Binding CancelarCommand}"
+            Text="Cancelar" 
+            Grid.Row="15" 
+            Grid.ColumnSpan="2" 
+            BackgroundColor="DarkMagenta" 
+            TextColor="White"/>
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
