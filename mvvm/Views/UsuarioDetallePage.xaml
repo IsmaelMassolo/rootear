@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="rootear.mvvm.Views.UsuarioDetallePage"
+             xmlns:vm="clr-namespace:rootear.mvvm.ViewModels"
+             xmlns:models="clr-namespace:rootear.mvvm.Models"
+             xmlns:local="clr-namespace:rootear.Utils"
+             x:DataType="vm:UsuarioDetalleViewModel"
+             BackgroundColor="#eeefef"
+             Title="{Binding Title}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:IntToVisibilityConverter x:Key="IntToVisibilityConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout Margin="5" Spacing="15" HorizontalOptions="Center">
+
+            <Frame Padding="0" CornerRadius="5" HasShadow="True" Margin="0,10">
+                <Grid>
+                    <Image 
+                        Source="{Binding Usuario.RutaImagen}" 
+                        HeightRequest="270"
+                        Aspect="AspectFill">
+                        <Image.Clip>
+                            <EllipseGeometry 
+                                Center="150,-50" 
+                                RadiusX="410" 
+                                RadiusY="410" />
+                        </Image.Clip>
+                    </Image>
+
+                    <Label 
+                        HorizontalOptions="End"
+                        VerticalOptions="End"
+                        Margin="0, 0, 10, 10">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Soy " FontSize="14" FontAttributes="Bold" TextColor="violet"/>
+                                <Span Text="{Binding Usuario.Rol}" FontSize="18" FontAttributes="Bold" TextColor="violet"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </Grid>
+            </Frame>
+
+            <Label 
+                Text="{Binding Usuario.Nombre}"                                                
+                HorizontalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{Binding Usuario.UsuarioNombre}" FontSize="20" FontAttributes="Bold" TextColor="#695b97" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <!-- Autor -->
+            <Label 
+                Text="{Binding Usuario.Apellido}"                                                 
+                FontSize="12" 
+                TextColor="#352e4c" 
+                HorizontalOptions="Center"
+                Margin="0,-10,0,0"/>
+
+            <!-- Contenedor para detalles del libro, más juntos -->
+            <StackLayout Spacing="4" HorizontalOptions="Start" >
+                <!-- Año de edición -->
+                <Label 
+                    Text="{Binding Usuario.Edad, StringFormat='Edad: {0}'}"                                                 
+                    FontSize="12" 
+                    TextColor="#195565" 
+                    Margin="30,0,0,0"/>
+
+                <!-- ISBN -->
+                <Label 
+                    Text="{Binding Usuario.FechaNac, StringFormat='Es usuario: {0}'}"                                                 
+                    FontSize="12" 
+                    TextColor="#195565" 
+                    Margin="30,0,0,0" />
+
+                <!-- Páginas -->
+                <Label 
+                    Text="{Binding Usuario.Genero, StringFormat='Genero: {0}'}"                                                 
+                    FontSize="12" 
+                    TextColor="#195565" 
+                    Margin="30,0,0,0" />
+
+                <!-- Editorial -->
+                <Label 
+                    Text="{Binding Usuario.ActivoDesde, StringFormat='Activo desde: {0}'}"                                                 
+                    FontSize="12" 
+                    TextColor="#195565" 
+                    Margin="30,0,0,0" />
+
+                <!-- Idioma -->
+                <Label 
+                    Text="{Binding Usuario.Lugar.Ciudad, StringFormat='Ciudad: {0}'}"                                                 
+                    FontSize="12" 
+                    TextColor="#195565" 
+                    Margin="30,0,0,0" />
+
+                <!-- Idioma -->
+                <Label 
+                    Text="{Binding Usuario.Lugar.Provincia, StringFormat='Provincia: {0}'}"                                                 
+                    FontSize="12" 
+                    TextColor="#195565" 
+                    Margin="30,0,0,0" />
+
+                <Label 
+                    Text="{Binding Usuario.Vehiculo.Marca, StringFormat='Vehiculo: {0}'}"                                                 
+                    FontSize="12" 
+                    TextColor="#195565" 
+                    Margin="30,0,0,0" />
+
+                <Label 
+                    Text="{Binding Usuario.Vehiculo.CantPlazas, StringFormat='Lugares en Vehiculo: {0}!'}"                                                 
+                    FontSize="12" 
+                    TextColor="#195565" 
+                    Margin="30,0,0,0" />
+
+            </StackLayout>
+
+
+            <!-- Descripción del Producto -->
+            <Label 
+                Text="{Binding Usuario.Reserva.DetallesReservas.Count,StringFormat='Ha viajado: {0} veces!'}" 
+                FontSize="12" 
+                TextColor="Black"
+                FontAttributes="Italic"
+                HorizontalOptions="Center" 
+                LineBreakMode="WordWrap"
+                Margin="0,0,0,10"
+                />
+
+
+
+            <!-- Rating del Producto -->
+            <Label 
+                Text="Calificación" 
+                FontSize="14" 
+                FontAttributes="Bold" 
+                TextColor="#a75b60"
+                HorizontalOptions="Center"
+                Margin="0, 10, 0, -20"/>
+
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="2">
+                <Label Text="★" FontSize="24" TextColor="#e9ad41" />
+                <!-- Estrella llena -->
+                <Label Text="★" FontSize="24" TextColor="#e9ad41" />
+                <Label Text="★" FontSize="24" TextColor="#e9ad41" />
+                <Label Text="★" FontSize="24" TextColor="#e9ad41" />
+                <Label Text="★" FontSize="24" TextColor="#e9ad41" />
+            </HorizontalStackLayout>
+
+
+            <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="Center">
+                <Button 
+                    Text="Volver a la lista" 
+                    Margin="10,-15,0,10" 
+                    BackgroundColor="#a75b60" 
+                    Command="{Binding GoBackCommand}" 
+                    TextColor="White" 
+                    CornerRadius="5"
+                    HeightRequest="15"
+                    WidthRequest="150"/>
+                <!--<Button 
+                    Text="Agregar al Carrito" 
+                    Command="{Binding AgregarAlCarritoCommand}" 
+                    Margin="0,-15, 0, 10" 
+                    BackgroundColor="#298ea9" 
+                    TextColor="White" 
+                    CornerRadius="5"
+                    HeightRequest="15"
+                    WidthRequest="150"/>-->
+
+                
+                
+            </StackLayout>
+
+            <!-- Botón eliminar -->
+            <Button 
+                Text="Deshabilitar Usuario" 
+                BackgroundColor="#5E2B91" 
+                Command="{Binding DeshabilitarUsuarioCommand}"
+                IsVisible="{Binding EsVisible, Converter={StaticResource IntToVisibilityConverter}}"
+                TextColor="White" 
+                CornerRadius="5"
+                HorizontalOptions="Center" 
+                VerticalOptions="Center"
+                WidthRequest="200" 
+                HeightRequest="50" 
+                Margin="0,0,0,10"/>
+
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

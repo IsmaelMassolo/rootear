@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="rootear.mvvm.Views.LoginPage"
+             xmlns:viewModels="clr-namespace:rootear.mvvm.ViewModels"
+             x:DataType="viewModels:LoginViewModel" 
+             Title="{Binding Title}"
+             BackgroundColor="#94c7d4">
+
+
+    <VerticalStackLayout Padding="20" Spacing="25" VerticalOptions="Center">
+
+
+        <Frame CornerRadius="100"
+               Padding="35"
+               HasShadow="False"
+               BackgroundColor="Transparent"
+               HorizontalOptions="Center"
+               BorderColor="#7fbbcb">
+
+            <Image Source="logo.jpg" WidthRequest="100" HeightRequest="100" HorizontalOptions="Center" Scale="2" />
+        </Frame>
+
+
+        <Label Text="rOOtear" 
+               FontSize="39" 
+               FontAttributes="Bold" 
+               HorizontalOptions="Center" 
+               TextColor="#cf6740"/>
+
+        <Entry Placeholder="Nombre de Usuario" 
+               Text="{Binding NombreUsuario}" 
+               Keyboard="Email"
+               WidthRequest="250"
+               BackgroundColor="#f1e0f0" 
+               TextColor="Black"
+               Margin="0,10,0,0"
+               HorizontalOptions="Center"
+               HorizontalTextAlignment="Center" />
+
+        <Entry Placeholder="Contraseña" 
+               Text="{Binding Password}" 
+               IsPassword="True" 
+               WidthRequest="250"
+               BackgroundColor="#f1e0f0" 
+               TextColor="Black"
+               HorizontalOptions="Center"
+               HorizontalTextAlignment="Center" />
+
+        <Button Text="Ingresar" 
+                Command="{Binding LoginCommand}" 
+                BackgroundColor="#695b97" 
+                TextColor="White"
+                CornerRadius="05"
+                WidthRequest="250"
+                HorizontalOptions="Center" />
+
+        <ActivityIndicator IsRunning="{Binding IsBusy}" 
+                Color="Violet" 
+                IsVisible="{Binding IsBusy}" />
+
+        <Label Text="{Binding Message}" 
+               TextColor="#FF4500" 
+               IsVisible="{Binding Message}" 
+               HorizontalOptions="Center" />
+
+        <!-- Botón Agregar Usuario -->
+        <Button Text="No tengo cuenta, quiero comenzar a rootear" 
+           Command="{Binding NuevoUsuarioCommand}" 
+           BackgroundColor="#2a8ea8" 
+           TextColor="White" 
+           HorizontalOptions="Center"
+           VerticalOptions="End"
+           Margin="0,0,0,100" 
+           WidthRequest="300" 
+           HeightRequest="20" 
+           CornerRadius="05"
+           FontSize="12" />
+    </VerticalStackLayout>
+   
+</ContentPage>

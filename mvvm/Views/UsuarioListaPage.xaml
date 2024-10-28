@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:rootear.mvvm.ViewModels"
+             xmlns:models="clr-namespace:rootear.mvvm.Models"
+             xmlns:local="clr-namespace:rootear.Utils"
+               x:Class="rootear.mvvm.Views.UsuarioListaPage"
+             x:DataType="vm:UsuarioListaViewModel"
+             BackgroundColor="LightPink"
+             Title="Lista de nuestros usuarios">
+
+
+    <Grid Padding="5">
+    <RefreshView Command="{Binding GetUsuariosCommand}" IsRefreshing="{Binding IsRefreshing}">
+        <ScrollView>
+            <StackLayout Padding="0,0,0,0">
+                <!-- Lista de Usuarios -->
+                <CollectionView ItemsSource="{Binding Usuarios}"
+                                SelectionMode="Single"
+                                SelectedItem="{Binding UsuarioSeleccionado}"
+                                SelectionChangedCommand="{Binding GoToDetailCommand}">
+                    <CollectionView.EmptyView>
+                        <StackLayout Padding="100">
+                            <Image Source="asdf.jpg" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                        </StackLayout>
+                    </CollectionView.EmptyView>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Usuario">
+                            <Frame Margin="5,6,5,5"
+                                   Padding="10"
+                                   CornerRadius="10"
+                                   HasShadow="True"
+                                   BackgroundColor="#f6f5f3">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                        <Image Source="{Binding RutaImagen}"
+                                           WidthRequest="100"
+                                           HeightRequest="100"
+                                           Aspect="AspectFill">
+                                            <Image.Clip>
+                                                <EllipseGeometry Center="50,50"
+                                                             RadiusX="50"
+                                                             RadiusY="50"/>
+                                        </Image.Clip>
+                                    </Image>
+                                    <StackLayout Grid.Column="1"
+                                                 Padding="10,5,20,5">
+
+
+                                            <Label FontSize="14"
+                                                   TextColor="#2f4574"
+                                                   FontAttributes="Bold"
+                                                   Padding="30,10,0,0">
+                                                <Label.Text>
+                                                    <MultiBinding StringFormat="{}{0} {1}">
+                                                        <Binding Path="Nombre"/>
+                                                        <Binding Path="Apellido"/>
+                                                    </MultiBinding>
+                                                </Label.Text>
+                                            </Label>
+
+
+                                            <Label Text="{Binding UsuarioNombre}"
+                                               FontSize="22"                                               
+                                               TextColor="#792a48"
+                                               MaxLines="1"
+                                                    Padding="30,0,0,0"
+                                               LineBreakMode="TailTruncation" />
+
+                                            <Label FontSize="12"
+                                                   TextColor="#2f4574"
+                                                   FontAttributes="Bold"
+                                                   Padding="30,10,0,0">
+                                                <Label.Text>
+                                                    <MultiBinding StringFormat="{}{0} {1}">
+                                                        <Binding Path="Lugar.Ciudad"/>
+                                                        <Binding Path="Lugar.Provincia"/>
+                                                    </MultiBinding>
+                                                </Label.Text>
+                                            </Label>
+                                        
+
+                                        </StackLayout>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </ScrollView>
+        
+    </RefreshView>
+
+        <Button Text="☰" 
+                 Command="{Binding GoToMainPageCommand}" 
+                 BackgroundColor="#A52A2A" 
+                 TextColor="White" 
+                 HorizontalOptions="Start"
+                 VerticalOptions="End"
+                 Margin="25,20,0,25" 
+                 WidthRequest="60" 
+                 HeightRequest="60" 
+                 CornerRadius="10"
+                 FontSize="30" />
+    </Grid>
+</ContentPage>
