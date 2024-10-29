@@ -5,7 +5,7 @@
              xmlns:models="clr-namespace:rootear.mvvm.Models"
              x:Class="rootear.mvvm.Views.UsuarioModificarPage"
              x:DataType="vm:UsuarioModificarViewModel"
-             BackgroundColor="#9093E0"
+             BackgroundColor="#3DD6AF"
              
              Title="{Binding Title}">
 
@@ -45,9 +45,9 @@
 
                 <Image Source="{Binding Usuario.RutaImagen}" Margin="0,10" HeightRequest="150" HorizontalOptions="Center" Grid.Row="19" Grid.ColumnSpan="2"/>
 
-                <Button Command="{Binding GuardarCambiosCommand}" Text="Grabar" Grid.Row="20" Grid.ColumnSpan="2" Margin="0,30,0,0"/>
+                <Button Command="{Binding GuardarCambiosCommand}" Text="Grabar" Grid.Row="20" Grid.ColumnSpan="2" Margin="0,30,0,0" BackgroundColor="#1CBBD4"/>
 
-                <Button Command="{Binding CancelarCommand}" Text="Cancelar" Grid.Row="21" Grid.ColumnSpan="2" BackgroundColor="DarkMagenta" TextColor="White" Margin="0,10,0,0"/>
+                <Button Command="{Binding CancelarCommand}" Text="Cancelar" Grid.Row="21" Grid.ColumnSpan="2" BackgroundColor="#ff6666" TextColor="White" Margin="0,10,0,0"/>
             </Grid>
         </VerticalStackLayout>
     </ScrollView>

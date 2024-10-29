@@ -1,12 +1,12 @@
-﻿//using rootear.mvvm.Models;
+﻿using rootear.mvvm.Models;
+using rootear.mvvm.Models.DTO;
 
-//namespace rootear.mvvm.Services;
+namespace rootear.mvvm.Services;
 
-//public interface IViajeService
-//{
-//    Task<IEnumerable<Producto>> GetProductos();
-//    Task<Producto> GetProductoPorId(int id);
-//    Task<bool> AgregarProducto(ProductoDTO _producto);
-//    Task<bool> EliminarProductoAsync(int id);
-//    Task<bool> SubirImagen(ProductoDTO registro);
-//}
+public interface IViajeService
+{
+    Task<IEnumerable<Viaje>> GetViajes();
+    Task<Viaje> GetViajePorId(int id);
+    Task<bool> CrearViaje(ViajeDTO _viaje);
+    Task<bool> EliminarViajeAsync(int id);
+}

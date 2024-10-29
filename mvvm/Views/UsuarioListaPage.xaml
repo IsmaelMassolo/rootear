@@ -6,14 +6,14 @@
              xmlns:local="clr-namespace:rootear.Utils"
                x:Class="rootear.mvvm.Views.UsuarioListaPage"
              x:DataType="vm:UsuarioListaViewModel"
-             BackgroundColor="#9093E0"
+             BackgroundColor="#3DD6AF"
              Title="Lista de nuestros usuarios">
 
 
     <Grid Padding="5">
     <RefreshView Command="{Binding GetUsuariosCommand}" IsRefreshing="{Binding IsRefreshing}">
         <ScrollView>
-            <StackLayout Padding="0,0,0,0">
+            <StackLayout Padding="10,10,10,0">
                 <!-- Lista de Usuarios -->
                 <CollectionView ItemsSource="{Binding Usuarios}"
                                 SelectionMode="Single"
@@ -26,8 +26,8 @@
                     </CollectionView.EmptyView>
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="models:Usuario">
-                            <Frame Margin="5,6,5,5"
-                                   Padding="10"
+                            <Frame Margin="15,15,15,15"
+                                   Padding="6"
                                    CornerRadius="10"
                                    HasShadow="False"
                                    BackgroundColor="#f6f5f3">
@@ -48,11 +48,11 @@
                                         </Image.Clip>
                                     </Image>
                                     <StackLayout Grid.Column="1"
-                                                 Padding="10,5,20,5">
+                                                 Padding="20,0,20,0">
                                             <Label FontSize="14"
                                                    TextColor="#2f4574"
                                                    FontAttributes="Bold"
-                                                   Padding="30,10,0,0">
+                                                   Padding="20,5,0,5">
                                                 <Label.Text>
                                                     <MultiBinding StringFormat="{}{0} {1}">
                                                         <Binding Path="Nombre"/>
@@ -66,13 +66,20 @@
                                                FontSize="22"                                               
                                                TextColor="#792a48"
                                                MaxLines="1"
-                                                    Padding="30,0,0,0"
+                                               Padding="20,0,0,0"
                                                LineBreakMode="TailTruncation" />
 
+                                            <Label Text="{Binding Rol}"
+                                               FontSize="12"                                               
+                                               TextColor="#792a48"
+                                               MaxLines="1"
+                                               Padding="20,0,0,5"
+                                               LineBreakMode="TailTruncation" />
+                                        
                                             <Label FontSize="12"
                                                    TextColor="#2f4574"
                                                    FontAttributes="Bold"
-                                                   Padding="30,10,0,0">
+                                                   Padding="20,5,0,5">
                                                 <Label.Text>
                                                     <MultiBinding StringFormat="{}{0} {1}">
                                                         <Binding Path="Lugar.Ciudad"/>
@@ -80,9 +87,7 @@
                                                     </MultiBinding>
                                                 </Label.Text>
                                             </Label>
-                                        
-
-                                        </StackLayout>
+                                    </StackLayout>
                                 </Grid>
                             </Frame>
                         </DataTemplate>
@@ -95,8 +100,7 @@
 
         <Button Text="☰" 
                  Command="{Binding GoToMainPageCommand}" 
-                 BackgroundColor="#A52A2A" 
-                 TextColor="White" 
+                 BackgroundColor="#ff6666" TextColor="White"
                  HorizontalOptions="Start"
                  VerticalOptions="End"
                  Margin="25,20,0,25" 

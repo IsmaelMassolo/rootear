@@ -11,11 +11,11 @@ namespace rootear.mvvm.ViewModels
             Title = "rootear";
         }
 
-        //[RelayCommand]
-        //public async Task GoToProductoLista()
-        //{
-        //    await Application.Current.MainPage.Navigation.PushAsync(new ProductoListaPage());
-        //}
+        [RelayCommand]
+        public async Task GoToViajeLista()
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(new ViajeListaPage());
+        }
 
         //[RelayCommand]
         //public async Task GoToCarrito()

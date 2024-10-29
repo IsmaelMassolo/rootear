@@ -3,7 +3,7 @@
              x:Class="rootear.mvvm.Views.AcercaPage"
              xmlns:vm="clr-namespace:rootear.mvvm.ViewModels"
              Title="Acerca de.."
-            BackgroundColor="#f3cedd">
+            BackgroundColor="#BAB9EB">
     
     <VerticalStackLayout>
         <BoxView HeightRequest="10" Color="Transparent" />
@@ -15,7 +15,7 @@
                HorizontalOptions="Center"
                Margin="0,100,0,0"
                FontSize="35"
-               TextColor="#D55387"
+               TextColor="#FFC172"
                FontAttributes="Bold"/>
 
         <Label Text="Desarrollada por:"
@@ -28,7 +28,7 @@
                FontSize="22"
                VerticalOptions="Center" 
                HorizontalOptions="Center"
-               TextColor="#07AA9F"
+               TextColor="#C9284F"
                Margin="0,5,0,0"/>
 
         <Label Text="noviembre - 2024"
@@ -47,8 +47,8 @@
 
         </HorizontalStackLayout>
 
-        <Button Text="Volver"  WidthRequest="150" Margin="0,30,0,0"
-               Command="{Binding GoToMainPageCommand}" />
+        <Button Text="Atras"  WidthRequest="250" Margin="0,30,0,0"
+               Command="{Binding GoToMainPageCommand}" BackgroundColor="#ff6666"/>
         
     </VerticalStackLayout>
 </ContentPage>

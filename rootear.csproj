@@ -79,6 +79,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="mvvm\Views\ViajeDetallePage.xaml.cs">
+	    <DependentUpon>ViajeDetallePage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="mvvm\Views\ViajeListaPage.xaml.cs">
+	    <DependentUpon>ViajeListaPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="mvvm\Views\UsuarioModificarPage.xaml.cs">
 	    <DependentUpon>UsuarioModificarPage.xaml</DependentUpon>
 	  </Compile>
@@ -95,6 +101,12 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="mvvm\Views\MainPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="mvvm\Views\ViajeListaPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="mvvm\Views\ViajeDetallePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="mvvm\Views\UsuarioModificarPage.xaml">

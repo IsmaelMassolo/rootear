@@ -5,7 +5,7 @@
              xmlns:viewModels="clr-namespace:rootear.mvvm.ViewModels"
              x:DataType="viewModels:LoginViewModel" 
              Title="{Binding Title}"
-             BackgroundColor="#94c7d4">
+             BackgroundColor="#752092">
 
 
     <VerticalStackLayout Padding="20" Spacing="25" VerticalOptions="Center">
@@ -26,7 +26,7 @@
                FontSize="39" 
                FontAttributes="Bold" 
                HorizontalOptions="Center" 
-               TextColor="#cf6740"/>
+               TextColor="#FFC172"/>
 
         <Entry Placeholder="Nombre de Usuario" 
                Text="{Binding NombreUsuario}" 
@@ -49,7 +49,7 @@
 
         <Button Text="Ingresar" 
                 Command="{Binding LoginCommand}" 
-                BackgroundColor="#695b97" 
+                BackgroundColor="#1CBBD4" 
                 TextColor="White"
                 CornerRadius="05"
                 WidthRequest="250"
@@ -67,7 +67,7 @@
         <!-- Botón Agregar Usuario -->
         <Button Text="No tengo cuenta, quiero comenzar a rootear" 
            Command="{Binding NuevoUsuarioCommand}" 
-           BackgroundColor="#2a8ea8" 
+           BackgroundColor="Black" 
            TextColor="White" 
            HorizontalOptions="Center"
            VerticalOptions="End"

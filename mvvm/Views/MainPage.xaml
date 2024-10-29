@@ -27,15 +27,15 @@
 
                         <!-- GestureRecognizer para que funcione como botón -->
                         <Grid.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding GoToAcercaCommand}" />
+                            <TapGestureRecognizer Command="{Binding GoToViajeListaCommand}" />
                         </Grid.GestureRecognizers>
                     </Grid>
                 </Frame>
 
 
-                <Button BackgroundColor="#10BCE3" HeightRequest="90" ContentLayout="Top,5" Grid.Column="0" Grid.Row="2" Text="Mis reservas" Command="{Binding GoToUsuarioListaCommand}" FontSize="12">
+                <Button BackgroundColor="#10BCE3" HeightRequest="90" ContentLayout="Top,5" Grid.Column="0" Grid.Row="2" Text="Mis reservas"  FontSize="12">
                     <Button.ImageSource>
-                        <FontImageSource Size="50" FontFamily="MaterialDesignIcons" Glyph="󰰟" />
+                        <FontImageSource Size="50" FontFamily="MaterialDesignIcons" Glyph="󱡹" />
                     </Button.ImageSource>
                 </Button>
 
@@ -51,7 +51,7 @@
                     </Button.ImageSource>
                 </Button>
 
-                <Button BackgroundColor="#3DD6AF" HeightRequest="80" ContentLayout="Top,5" Grid.Column="1" Grid.Row="3" Text="Usuarios" FontSize="12">
+                <Button BackgroundColor="#3DD6AF" HeightRequest="80" ContentLayout="Top,5" Grid.Column="1" Grid.Row="3" Text="Usuarios" FontSize="12" Command="{Binding GoToUsuarioListaCommand}">
                     <Button.ImageSource>
                         <FontImageSource Size="40" FontFamily="MaterialDesignIcons" Glyph="󰡉" />
                     </Button.ImageSource>

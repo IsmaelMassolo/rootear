@@ -1,7 +1,7 @@
 using rootear.Services;
 using rootear.mvvm.ViewModels;
 
-namespace BookApp.mvvm.Views;
+namespace rootear.mvvm.Views;
 
 public partial class UsuarioAgregarPage : ContentPage
 {

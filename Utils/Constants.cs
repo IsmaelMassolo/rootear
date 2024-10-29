@@ -12,7 +12,11 @@ public static class Constants
     public const string ValidarCredencialEndpoint = "http://localhost:5161/api/Usuario/ValidarCredencial";
     //LUGAR
     public const string ObtenerLugaresEndpoint = "http://localhost:5161/api/Lugar";
-    //
+    //VIAJE
+    public const string ObtenerViajesEndpoint = "http://localhost:5161/api/Viaje";
+    public const string ObtenerViajeEndpoint = "http://localhost:5161/api/Viaje/ObtenerPorId";
+    public const string CrearViajeEndpoint = "http://localhost:5161/api/Viaje/Crear";
+    public const string EliminarViajeEndpoint = "http://localhost:5161/api/Viaje";
 
     public static string AppName = "rootear";
 
