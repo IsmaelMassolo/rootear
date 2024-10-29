@@ -1,153 +1,78 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"    
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:rootear.mvvm.ViewModels"
              x:DataType="vm:MainViewModel"
              Title="{Binding Title}"
              x:Class="rootear.mvvm.Views.MainPage"
-             BackgroundColor="#bfdde5">
-
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <!-- Estilo por defecto para todos los botones -->
-            <Style TargetType="Button">
-                <Setter Property="TextColor" Value="#2D2D39" />
-                <Setter Property="Padding" Value="10" />
-                <Setter Property="CornerRadius" Value="5" />
-                <Setter Property="BorderColor" Value="Transparent" />
-            </Style>
-
-            <!-- Estilo para el botón de libros -->
-            <Style TargetType="Button" x:Key="LibrosButtonStyle">
-                <Setter Property="BackgroundColor" Value="#ffffff" />
-                <Setter Property="BorderColor" Value="transparent" />
-                <Setter Property="HeightRequest" Value="110" />
-            </Style>
-
-            <!-- Estilo para el botón de usuarios -->
-            <Style TargetType="Button" x:Key="UsuariosButtonStyle">
-                <Setter Property="BackgroundColor" Value="#a32d90" />
-                <Setter Property="HeightRequest" Value="100" />
-            </Style>
-
-            <!-- Estilo para el botón de carrito -->
-            <Style TargetType="Button" x:Key="CarritoButtonStyle">
-                <Setter Property="BackgroundColor" Value="#df783c" />
-                <Setter Property="HeightRequest" Value="100" />
-            </Style>
-
-            <!-- Estilo para el botón de acerca de -->
-            <Style TargetType="Button" x:Key="AcercaButtonStyle">
-                <Setter Property="BackgroundColor" Value="#37b0b1" />
-                <Setter Property="HeightRequest" Value="80" />
-            </Style>
-
-            <!-- Estilo para el botón de salir -->
-            <Style TargetType="Button" x:Key="SalirButtonStyle">
-                <Setter Property="BackgroundColor" Value="#4160A1" />
-                <Setter Property="HeightRequest" Value="80" />
-            </Style>
-        </ResourceDictionary>
-    </ContentPage.Resources>
+             BackgroundColor="#C9284F">
 
     <Grid>
-        <Image Source="dos.png" 
-               Aspect="AspectFill" 
-               Opacity="0.3"
-               Grid.RowSpan="2"/>
+        <Image Source="dos.png" Aspect="AspectFill" Opacity="0.3" Grid.RowSpan="2"/>
 
-        <VerticalStackLayout Margin="20, 10"
-                             VerticalOptions="Center">
-            <!--<Label Text="!" HorizontalTextAlignment="Center" Margin="0,5,0,5" TextColor="#2D2D39"/>-->
-            <Label Text="rooteá!" HorizontalTextAlignment="Center" FontSize="24" Margin="0,5,0,15" TextColor="#D55387"/>
-            <Grid RowSpacing="20"
-                  ColumnSpacing="20"
-                  ColumnDefinitions="*,*" 
-                  RowDefinitions="*,*,*,*,*">
+        <VerticalStackLayout Margin="20,10" VerticalOptions="Center">
+            <Label Text="!" HorizontalTextAlignment="Center" Margin="5,5,5,5" TextColor="#2D2D39"/>
+            <Label Text="rooteá!" HorizontalTextAlignment="Center" FontSize="28" Margin="0,5,0,15" TextColor="#FFC172"/>
 
-                <Button Style="{StaticResource LibrosButtonStyle}" 
-                        ContentLayout="Top, 5" 
-                        Grid.Row="1" 
-                        Grid.ColumnSpan="2" 
-                        Text="Viajes disponibles"
-                        >
+            <Grid RowSpacing="12" ColumnSpacing="10" ColumnDefinitions="*,*" RowDefinitions="*,*,*,*,*,*,*,*,*">
+
+                <Frame Padding="0" HeightRequest="100" Grid.Row="1" Grid.ColumnSpan="2" BackgroundColor="#2469A0" CornerRadius="10" BorderColor="#C9284F" HasShadow="False">
+                    <Grid>
+                        <!-- Imagen que cubre todo el botón con transparencia -->
+                        <Image Source="Ruta.png" Aspect="Fill" Opacity="0.7" />
+
+                        <!-- Texto sobre la imagen -->
+                        <Label Text="Encontrar viajes" FontSize="18" TextColor="White"
+               HorizontalOptions="Center" VerticalOptions="Center" />
+
+                        <!-- GestureRecognizer para que funcione como botón -->
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoToAcercaCommand}" />
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                </Frame>
+
+
+                <Button BackgroundColor="#10BCE3" HeightRequest="90" ContentLayout="Top,5" Grid.Column="0" Grid.Row="2" Text="Mis reservas" Command="{Binding GoToUsuarioListaCommand}" FontSize="12">
                     <Button.ImageSource>
-                        <FileImageSource File="btnViajes.png" />
+                        <FontImageSource Size="50" FontFamily="MaterialDesignIcons" Glyph="󰰟" />
                     </Button.ImageSource>
                 </Button>
 
-                <!-- Botón USUARIOS -->
-                <Button Style="{StaticResource UsuariosButtonStyle}" 
-                        ContentLayout="Top, 5" 
-                        Grid.Column="0" 
-                        Grid.Row="2" 
-                        Text="Usuarios" 
-                        Command="{Binding GoToUsuarioListaCommand}">
+                <Button BackgroundColor="#10BCE3" HeightRequest="90" ContentLayout="Top,5" Grid.Column="1" Grid.Row="2" Text="Mis Viajes" FontSize="12">
                     <Button.ImageSource>
-                        <FontImageSource Size="65" FontFamily="MaterialDesignIcons" Glyph="&#xe7fd;" />
+                        <FontImageSource Size="50" FontFamily="MaterialDesignIcons" Glyph="󱬌" />
                     </Button.ImageSource>
                 </Button>
 
-                <!-- Botón SALARESERVA -->
-                <Button Style="{StaticResource CarritoButtonStyle}" 
-                        ContentLayout="Top, 5" 
-                        Grid.Column="1" 
-                        Grid.Row="2" 
-                        Text="Tu sala de reservas">
+                <Button BackgroundColor="#3DD6AF" HeightRequest="80" ContentLayout="Top,5" Grid.Column="0" Grid.Row="3" Text="Mi Perfil" Command="{Binding GoToPerfilUsuarioCommand}" FontSize="12">
                     <Button.ImageSource>
-                        <FontImageSource Size="65" FontFamily="MaterialDesignIcons" Glyph="&#xf86b;" />
+                        <FontImageSource Size="40" FontFamily="MaterialDesignIcons" Glyph="󰱕" />
                     </Button.ImageSource>
                 </Button>
 
-                <!-- Botón TU PERFIL -->
-                <Button Style="{StaticResource CarritoButtonStyle}" 
-                        ContentLayout="Top, 5" 
-                        Grid.Column="0" 
-                        Grid.Row="3" 
-                        Text="Tu perfil"
-                        Command="{Binding GoToPerfilUsuarioCommand}">
+                <Button BackgroundColor="#3DD6AF" HeightRequest="80" ContentLayout="Top,5" Grid.Column="1" Grid.Row="3" Text="Usuarios" FontSize="12">
                     <Button.ImageSource>
-                        <FontImageSource Size="65" FontFamily="MaterialDesignIcons" Glyph="&#xf86b;" />
+                        <FontImageSource Size="40" FontFamily="MaterialDesignIcons" Glyph="󰡉" />
                     </Button.ImageSource>
                 </Button>
 
-                <!-- Botón SALARESERVA -->
-                <Button Style="{StaticResource CarritoButtonStyle}" 
-                        ContentLayout="Top, 5" 
-                        Grid.Column="1" 
-                        Grid.Row="3" 
-                        Text="Otro"
-                        >
-
-
+                <Button BackgroundColor="#8BE27E" HeightRequest="70" ContentLayout="Top,5" Grid.Column="0" Grid.Row="4" Text="Planear Viaje" Command="{Binding GoToAcercaCommand}" FontSize="12">
                     <Button.ImageSource>
-                        <FontImageSource Size="65" FontFamily="MaterialDesignIcons" Glyph="&#xf86b;" />
+                        <FontImageSource Size="30" FontFamily="MaterialDesignIcons" Glyph="󰨫" />
+                        <!--󰂒-->
                     </Button.ImageSource>
                 </Button>
 
-                <!-- Botón ACERCA DE... -->
-                <Button Style="{StaticResource AcercaButtonStyle}" 
-                        ContentLayout="Top, 5" 
-                        Grid.Column="0" 
-                        Grid.Row="4" 
-                        Text="Acerca de..."
-                        Command="{Binding GoToAcercaCommand}">
+                <Button BackgroundColor="#8BE27E" HeightRequest="70" ContentLayout="Top,5" Grid.Column="1" Grid.Row="4" Text="Mapas" Command="{Binding ExitCommand}" FontSize="12">
                     <Button.ImageSource>
-                        <FontImageSource Size="45" FontFamily="MaterialDesignIcons" Glyph="&#xe88e;" />
+                        <FontImageSource Size="30" FontFamily="MaterialDesignIcons" Glyph="󰍎" />
                     </Button.ImageSource>
                 </Button>
 
-                <!-- Botón SALIR -->
-                <Button Style="{StaticResource SalirButtonStyle}" 
-                        ContentLayout="Top, 5" 
-                        Grid.Column="1" 
-                        Grid.Row="4" 
-                        Text="Salir"
-                        Command="{Binding ExitCommand}">
-                    <Button.ImageSource>
-                        <FontImageSource Size="45" FontFamily="MaterialDesignIcons" Glyph="&#xe9ba;" />
-                    </Button.ImageSource>
-                </Button>
+                <Button BackgroundColor="#BAB9EB" HeightRequest="50" ContentLayout="Top,5" Grid.Column="0" Grid.Row="5" Text="Acerca de..." Command="{Binding GoToAcercaCommand}" FontSize="12"></Button>
+
+                <Button BackgroundColor="#BAB9EB" HeightRequest="50" ContentLayout="Top,5" Grid.Column="1" Grid.Row="5" Text="Salir" Command="{Binding ExitCommand}" FontSize="12"></Button>
 
             </Grid>
         </VerticalStackLayout>

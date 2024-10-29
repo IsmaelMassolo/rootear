@@ -56,7 +56,17 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiFont Remove="Resources\Fonts\materialdesignicons-webfont.ttf" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\Fonts\materialdesignicons-webfont.ttf" />
+	  <None Remove="Resources\Images\ruta.png" />
 	  <None Remove="Resources\Images\user.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="Resources\Fonts\materialdesignicons-webfont.ttf" />
 	</ItemGroup>
 
 	<ItemGroup>

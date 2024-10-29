@@ -5,64 +5,49 @@
              xmlns:models="clr-namespace:rootear.mvvm.Models"
              x:Class="rootear.mvvm.Views.UsuarioModificarPage"
              x:DataType="vm:UsuarioModificarViewModel"
-             BackgroundColor="DarkGrey"
+             BackgroundColor="#9093E0"
              
              Title="{Binding Title}">
 
 
     <ScrollView>
         <VerticalStackLayout Margin="15">
-            <Grid ColumnDefinitions=".4*,.7*" RowDefinitions="*,*,*,*,*,*,*,*,*,*,*,*,*,*,*" RowSpacing="2">
+            <Grid ColumnDefinitions=".4*,.7*" RowDefinitions="*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*" RowSpacing="2">
 
-                <Label Margin="0,5,0,20" Text="Tu perfil" FontSize="Large" HorizontalOptions="Center" Grid.ColumnSpan="2" TextColor="BlueViolet" />
+                <Label Margin="0,5,0,10" Text="Mi perfil" FontSize="20" HorizontalOptions="Center" Grid.ColumnSpan="2" TextColor="DarkBlue" />
 
-                <Label Text="Nombre" Grid.Column="0" Grid.Row="1" VerticalOptions="Center" />
-                <Entry Grid.Column="1" Grid.Row="1" VerticalOptions="Center" Text="{Binding Usuario.Nombre}" TextColor="BlueViolet"/>
+                <Label Text="Nombre" Grid.Column="0" Grid.Row="1" HorizontalOptions="Center" Grid.ColumnSpan="2" FontSize="12" Margin="0,10,0,0"/>
+                <Entry Background="AntiqueWhite" Grid.Column="0" Grid.Row="2" VerticalOptions="Center" Text="{Binding Usuario.Nombre}" TextColor="Black" Grid.ColumnSpan="2"/>
 
-                <Label Text="Apellido" Grid.Column="0" Grid.Row="2" VerticalOptions="Center"/>
-                <Entry Grid.Column="1" Grid.Row="2" VerticalOptions="Center" Text="{Binding Usuario.Apellido}" TextColor="BlueViolet"/>
+                <Label Text="Apellido" Grid.Column="0" Grid.Row="3" VerticalOptions="Center" FontSize="12" HorizontalOptions="Center" Grid.ColumnSpan="2" Margin="0,10,0,0"/>
+                <Entry Background="AntiqueWhite" Grid.Column="0" Grid.Row="4" VerticalOptions="Center" Text="{Binding Usuario.Apellido}" TextColor="Black" Grid.ColumnSpan="2" BackgroundColor="Transparent"/>
 
-                <Label Text="UsuarioNombre" Grid.Column="0" Grid.Row="3" VerticalOptions="Center"/>
-                <Entry Grid.Column="1" Grid.Row="3" VerticalOptions="Center" Text="{Binding Usuario.UsuarioNombre}" TextColor="BlueViolet"/>
+                <Label Text="Nombre de Cuenta" Grid.Column="0" Grid.Row="5" VerticalOptions="Center" FontSize="12" HorizontalOptions="Center" Grid.ColumnSpan="2" Margin="0,10,0,0"/>
+                <Entry Background="AntiqueWhite" Grid.Column="0" Grid.Row="6" VerticalOptions="Center" Text="{Binding Usuario.UsuarioNombre}" TextColor="Black" Grid.ColumnSpan="2"/>
 
-                <Label Text="Email" Grid.Column="0" Grid.Row="4" VerticalOptions="Center"/>
-                <Entry Grid.Column="1" Grid.Row="4" VerticalOptions="Center" Text="{Binding Usuario.Email}" TextColor="BlueViolet"/>
+                <Label Text="Email" Grid.Column="0" Grid.Row="7" VerticalOptions="Center" FontSize="12" HorizontalOptions="Center" Grid.ColumnSpan="2" Margin="0,10,0,0"/>
+                <Entry Background="AntiqueWhite" Grid.Column="0" Grid.Row="8" VerticalOptions="Center" Text="{Binding Usuario.Email}" TextColor="Black" Grid.ColumnSpan="2"/>
 
-                <Label Text="Contrasena" Grid.Column="0" Grid.Row="5" VerticalOptions="Center"/>
-                <Entry Grid.Column="1" Grid.Row="5" VerticalOptions="Center" Text="{Binding Usuario.Contrasena}" IsPassword="True" TextColor="BlueViolet"/>
+                <Label Text="Contrasena" Grid.Column="0" Grid.Row="9" VerticalOptions="Center" FontSize="12" HorizontalOptions="Center" Grid.ColumnSpan="2" Margin="0,10,0,0"/>
+                <Entry Background="AntiqueWhite" Grid.Column="0" Grid.Row="10" VerticalOptions="Center" Text="{Binding Usuario.Contrasena}" IsPassword="True" TextColor="Black" Grid.ColumnSpan="2"/>
 
-                <Label Text="Celular" Grid.Column="0" Grid.Row="6" VerticalOptions="Center"/>
-                <Entry Grid.Column="1" Grid.Row="6" VerticalOptions="Center" Text="{Binding Usuario.Celular}" TextColor="BlueViolet"/>
+                <Label Text="Celular" Grid.Column="0" Grid.Row="11" VerticalOptions="Center" FontSize="12" HorizontalOptions="Center" Grid.ColumnSpan="2" Margin="0,10,0,0"/>
+                <Entry Background="AntiqueWhite" Grid.Column="0" Grid.Row="12" VerticalOptions="Center" Text="{Binding Usuario.Celular}" TextColor="Black" Grid.ColumnSpan="2"/>
 
-                <Label Text="Dni" Grid.Column="0" Grid.Row="7" VerticalOptions="Center"/>
-                <Entry Grid.Column="1" Grid.Row="7" VerticalOptions="Center" Text="{Binding Usuario.Dni}" TextColor="BlueViolet"/>
+                <Label Text="Dni" Grid.Column="0" Grid.Row="13" VerticalOptions="Center" FontSize="12" HorizontalOptions="Center" Grid.ColumnSpan="2" Margin="0,10,0,0"/>
+                <Entry Background="AntiqueWhite" Grid.Column="0" Grid.Row="14" VerticalOptions="Center" Text="{Binding Usuario.Dni}" TextColor="Black" Grid.ColumnSpan="2"/>
 
-                <Label Text="FechaNac" Grid.Column="0" Grid.Row="8" VerticalOptions="Center"/>
-                <DatePicker Grid.Column="1" Grid.Row="8" VerticalOptions="Center" Date="{Binding Usuario.FechaNac}" TextColor="BlueViolet"/>
+                <Label Text="FechaNac" Grid.Column="0" Grid.Row="15" VerticalOptions="Center" FontSize="12" HorizontalOptions="Center" Grid.ColumnSpan="2" Margin="0,10,0,0"/>
+                <DatePicker Background="AntiqueWhite" Grid.Column="0" Grid.Row="16" HorizontalOptions ="Center" VerticalOptions="Center" Date="{Binding Usuario.FechaNac}" TextColor="Black" Grid.ColumnSpan="2"/>
 
-                <Label Text="Rol" Grid.Column="0" Grid.Row="9" VerticalOptions="Center"/>
-                <Picker Grid.Column="1" Grid.Row="9"
+                <Label Text="Rol" Grid.Column="0" Grid.Row="17" VerticalOptions="Center" FontSize="12" HorizontalOptions="Center" Grid.ColumnSpan="2" Margin="0,10,0,0"/>
+                <Picker Background="AntiqueWhite" Grid.Column="0" Grid.Row="18" ItemsSource="{Binding Roles}" SelectedItem="{Binding Usuario.Rol}" VerticalOptions="Center" TextColor="Black" Grid.ColumnSpan="2"/>
 
-                        ItemsSource="{Binding Roles}"
-                        SelectedItem="{Binding Usuario.Rol}"
-                        VerticalOptions="Center" 
-                        TextColor="BlueViolet"/>
-                
-                
-                    <Image Source="{Binding Usuario.RutaImagen}" Margin="0,10" HeightRequest="150" HorizontalOptions="Center" Grid.Row="11" Grid.ColumnSpan="2" />
+                <Image Source="{Binding Usuario.RutaImagen}" Margin="0,10" HeightRequest="150" HorizontalOptions="Center" Grid.Row="19" Grid.ColumnSpan="2"/>
 
-                <Button 
-            Command="{Binding GuardarCambiosCommand}"
-            Text="Grabar" 
-            Grid.Row="13" 
-            Grid.ColumnSpan="2" />
-                <Button 
-            Command="{Binding CancelarCommand}"
-            Text="Cancelar" 
-            Grid.Row="15" 
-            Grid.ColumnSpan="2" 
-            BackgroundColor="DarkMagenta" 
-            TextColor="White"/>
+                <Button Command="{Binding GuardarCambiosCommand}" Text="Grabar" Grid.Row="20" Grid.ColumnSpan="2" Margin="0,30,0,0"/>
+
+                <Button Command="{Binding CancelarCommand}" Text="Cancelar" Grid.Row="21" Grid.ColumnSpan="2" BackgroundColor="DarkMagenta" TextColor="White" Margin="0,10,0,0"/>
             </Grid>
         </VerticalStackLayout>
     </ScrollView>

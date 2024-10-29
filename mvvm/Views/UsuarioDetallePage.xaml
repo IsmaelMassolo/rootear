@@ -6,7 +6,7 @@
              xmlns:models="clr-namespace:rootear.mvvm.Models"
              xmlns:local="clr-namespace:rootear.Utils"
              x:DataType="vm:UsuarioDetalleViewModel"
-             BackgroundColor="#eeefef"
+             BackgroundColor="#9093E0"
              Title="{Binding Title}">
 
     <ContentPage.Resources>
@@ -51,16 +51,16 @@
                 HorizontalOptions="Center">
                 <Label.FormattedText>
                     <FormattedString>
-                        <Span Text="{Binding Usuario.UsuarioNombre}" FontSize="20" FontAttributes="Bold" TextColor="#695b97" />
+                        <Span Text="{Binding Usuario.UsuarioNombre}" FontSize="20" FontAttributes="Bold" TextColor="DarkSlateGrey" />
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
 
             <!-- Autor -->
             <Label 
-                Text="{Binding Usuario.Apellido}"                                                 
-                FontSize="12" 
-                TextColor="#352e4c" 
+                Text="{Binding Usuario.Nombre}"                                                 
+                FontSize="14" 
+                TextColor="Black" 
                 HorizontalOptions="Center"
                 Margin="0,-10,0,0"/>
 
@@ -69,55 +69,62 @@
                 <!-- Año de edición -->
                 <Label 
                     Text="{Binding Usuario.Edad, StringFormat='Edad: {0}'}"                                                 
-                    FontSize="12" 
-                    TextColor="#195565" 
+                    FontSize="14" 
+                    TextColor="Black" 
                     Margin="30,0,0,0"/>
 
                 <!-- ISBN -->
                 <Label 
-                    Text="{Binding Usuario.FechaNac, StringFormat='Es usuario: {0}'}"                                                 
-                    FontSize="12" 
-                    TextColor="#195565" 
+                    Text="{Binding Usuario.Email, StringFormat='Email: {0}'}"                                                 
+                    FontSize="14" 
+                    TextColor="Black" 
                     Margin="30,0,0,0" />
+
+                <Label 
+                    Text="{Binding Usuario.Celular, StringFormat='Celular: {0}'}"                                                 
+                    FontSize="14" 
+                    TextColor="Black" 
+                    Margin="30,0,0,0" />
+                
 
                 <!-- Páginas -->
                 <Label 
                     Text="{Binding Usuario.Genero, StringFormat='Genero: {0}'}"                                                 
-                    FontSize="12" 
-                    TextColor="#195565" 
+                    FontSize="14" 
+                    TextColor="Black" 
                     Margin="30,0,0,0" />
 
                 <!-- Editorial -->
                 <Label 
                     Text="{Binding Usuario.ActivoDesde, StringFormat='Activo desde: {0}'}"                                                 
-                    FontSize="12" 
-                    TextColor="#195565" 
+                    FontSize="14" 
+                    TextColor="Black" 
                     Margin="30,0,0,0" />
 
                 <!-- Idioma -->
                 <Label 
                     Text="{Binding Usuario.Lugar.Ciudad, StringFormat='Ciudad: {0}'}"                                                 
-                    FontSize="12" 
-                    TextColor="#195565" 
+                    FontSize="14" 
+                    TextColor="Black" 
                     Margin="30,0,0,0" />
 
                 <!-- Idioma -->
                 <Label 
                     Text="{Binding Usuario.Lugar.Provincia, StringFormat='Provincia: {0}'}"                                                 
-                    FontSize="12" 
-                    TextColor="#195565" 
+                    FontSize="14" 
+                    TextColor="Black" 
                     Margin="30,0,0,0" />
 
                 <Label 
                     Text="{Binding Usuario.Vehiculo.Marca, StringFormat='Vehiculo: {0}'}"                                                 
-                    FontSize="12" 
-                    TextColor="#195565" 
+                    FontSize="14" 
+                    TextColor="Black" 
                     Margin="30,0,0,0" />
 
                 <Label 
                     Text="{Binding Usuario.Vehiculo.CantPlazas, StringFormat='Lugares en Vehiculo: {0}!'}"                                                 
-                    FontSize="12" 
-                    TextColor="#195565" 
+                    FontSize="14" 
+                    TextColor="Black" 
                     Margin="30,0,0,0" />
 
             </StackLayout>
@@ -143,9 +150,9 @@
                 FontAttributes="Bold" 
                 TextColor="#a75b60"
                 HorizontalOptions="Center"
-                Margin="0, 10, 0, -20"/>
+                Margin="0, 0, 0, -10"/>
 
-            <HorizontalStackLayout HorizontalOptions="Center" Spacing="2">
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="4">
                 <Label Text="★" FontSize="24" TextColor="#e9ad41" />
                 <!-- Estrella llena -->
                 <Label Text="★" FontSize="24" TextColor="#e9ad41" />
@@ -158,7 +165,7 @@
             <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="Center">
                 <Button 
                     Text="Volver a la lista" 
-                    Margin="10,-15,0,10" 
+                    Margin="10,10,0,0" 
                     BackgroundColor="#a75b60" 
                     Command="{Binding GoBackCommand}" 
                     TextColor="White" 
