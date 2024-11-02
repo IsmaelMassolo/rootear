@@ -50,18 +50,18 @@
 //            throw new Exception($"Error al obtener el carrito del usuario: {exception.Message}");
 //        }
 //    }
-//    public async Task<IEnumerable<ProductoCarrito>> GetProductoCarritoPorId(int id)
+//    public async Task<IEnumerable<ViajeCarrito>> GetViajeCarritoPorId(int id)
 //    {
 //        try
 //        {
-//            var response = await client.GetAsync($"{Constants.ProductoCarritoEndpoint}/{Transport.IdUsuario}");
+//            var response = await client.GetAsync($"{Constants.ViajeCarritoEndpoint}/{Transport.IdUsuario}");
 //            if (response.StatusCode == System.Net.HttpStatusCode.OK)
 //            {
 //                var jsonData = await response.Content.ReadAsStringAsync();
 //                if (!string.IsNullOrWhiteSpace(jsonData))
 //                {
-//                    // Deserializar como una lista de ProductoCarrito
-//                    var responseObject = JsonSerializer.Deserialize<IEnumerable<ProductoCarrito>>(jsonData,
+//                    // Deserializar como una lista de ViajeCarrito
+//                    var responseObject = JsonSerializer.Deserialize<IEnumerable<ViajeCarrito>>(jsonData,
 //                        new JsonSerializerOptions
 //                        {
 //                            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
@@ -84,12 +84,12 @@
 //            throw new Exception(exception.Message);
 //        }
 //    }
-//    public async Task<bool> AgregarAlCarrito(ProductoCarritoDTO _producto)
+//    public async Task<bool> AgregarAlCarrito(ViajeCarritoDTO _viaje)
 //    {
 //        try
 //        {
 
-//            var serializedProduct = JsonSerializer.Serialize(_producto);
+//            var serializedProduct = JsonSerializer.Serialize(_viaje);
 //            var content = new StringContent(
 //                serializedProduct,
 //                Encoding.UTF8,
@@ -97,7 +97,7 @@
 //            );
 
 //            // Realiza la llamada POST
-//            var response = await client.PostAsync(Constants.ProductoCarritoAgregarEndpoint, content).ConfigureAwait(false);
+//            var response = await client.PostAsync(Constants.ViajeCarritoAgregarEndpoint, content).ConfigureAwait(false);
 
 //            // Verifica el resultado
 //            if (response.IsSuccessStatusCode)
@@ -122,14 +122,14 @@
 //        try
 //        {
 //            // Serializamos el objeto modificado a JSON
-//            var jsonProducto = JsonSerializer.Serialize(carro, new JsonSerializerOptions
+//            var jsonViaje = JsonSerializer.Serialize(carro, new JsonSerializerOptions
 //            {
 //                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
 //                WriteIndented = true
 //            });
 
 //            // Creamos el contenido que se enviará en la solicitud PUT
-//            var content = new StringContent(jsonProducto, Encoding.UTF8, "application/json");
+//            var content = new StringContent(jsonViaje, Encoding.UTF8, "application/json");
 
 //            // Realizamos la solicitud PUT al endpoint específico
 //            var response = await client.PutAsync($"{Constants.ModificaCarroEndpoint}/{idUsuario}", content);
@@ -142,7 +142,7 @@
 //            }
 //            else
 //            {
-//                Exception exception = new Exception($"Error al modificar el producto. Código de estado: {response.StatusCode}");
+//                Exception exception = new Exception($"Error al modificar el viaje. Código de estado: {response.StatusCode}");
 //                throw new Exception(exception.Message);
 //            }
 //        }
@@ -151,25 +151,25 @@
 //            throw new Exception($"Error en la solicitud: {exception.Message}");
 //        }
 //    }
-//    public async Task<bool> EliminarProductoAsync(EliminarProductoCarritoDTO dto)
+//    public async Task<bool> EliminarViajeAsync(EliminarViajeCarritoDTO dto)
 //    {
 //        try
 //        {
 //            // Serializamos el objeto a JSON
-//            var jsonProducto = JsonSerializer.Serialize(dto, new JsonSerializerOptions
+//            var jsonViaje = JsonSerializer.Serialize(dto, new JsonSerializerOptions
 //            {
 //                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
 //                WriteIndented = true
 //            });
 
 //            // Creamos el contenido JSON para enviarlo en la solicitud
-//            var content = new StringContent(jsonProducto, Encoding.UTF8, "application/json");
+//            var content = new StringContent(jsonViaje, Encoding.UTF8, "application/json");
 
 //            // Construimos la solicitud de tipo DELETE con un cuerpo JSON
 //            var request = new HttpRequestMessage
 //            {
 //                Method = HttpMethod.Delete,
-//                RequestUri = new Uri(Constants.EliminarProductoDElCarroEndpoint),
+//                RequestUri = new Uri(Constants.EliminarViajeDElCarroEndpoint),
 //                Content = content
 //            };
 

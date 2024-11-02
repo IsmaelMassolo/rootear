@@ -9,8 +9,8 @@
 //public partial class CarritoViewModel : BaseViewModel
 //{
 //    [ObservableProperty] Carrito carrito;
-//    public ObservableCollection<ProductoCarrito> Productos { get; } = new();
-//    [ObservableProperty] private ProductoCarrito _productosEnCarrito;
+//    public ObservableCollection<ViajeCarrito> Viajes { get; } = new();
+//    [ObservableProperty] private ViajeCarrito _viajesEnCarrito;
 //    IReservaService _carritoService;
 //    [ObservableProperty] private int esVisible = Transport.RolUsuario;
 
@@ -21,28 +21,28 @@
 //    }
 
 //    [RelayCommand]
-//    private async Task EliminarProductoAsync(ProductoCarrito producto)
+//    private async Task EliminarViajeAsync(ViajeCarrito viaje)
 //    {
 //        try
 //        {
-//            var dto = new EliminarProductoCarritoDTO
+//            var dto = new EliminarViajeCarritoDTO
 //            {
-//                IdCarrito = producto.IdCarrito,
-//                IdProducto = producto.IdProducto,
-//                Cantidad = producto.Cantidad
+//                IdCarrito = viaje.IdCarrito,
+//                IdViaje = viaje.IdViaje,
+//                Cantidad = viaje.Cantidad
 //            };
 
-//            // Llamar al servicio para eliminar el producto
-//            var resultado = await _carritoService.EliminarProductoAsync(dto);
+//            // Llamar al servicio para eliminar el viaje
+//            var resultado = await _carritoService.EliminarViajeAsync(dto);
 
 //            if (resultado)
 //            {
-//                // Si es exitoso, eliminar el producto localmente
-//                Productos.Remove(producto);
+//                // Si es exitoso, eliminar el viaje localmente
+//                Viajes.Remove(viaje);
 //            }
 //            else
 //            {
-//                await Application.Current.MainPage.DisplayAlert("Error", "No se pudo eliminar el producto.", "OK");
+//                await Application.Current.MainPage.DisplayAlert("Error", "No se pudo eliminar el viaje.", "OK");
 //            }
 //        }
 //        catch (Exception ex)
@@ -53,19 +53,19 @@
 
 
 //    [RelayCommand]
-//    private async Task GetProductosDelUsuario()
+//    private async Task GetViajesDelUsuario()
 //    {
 //        try
 //        {
 
-//            var productos = await _carritoService.GetProductoCarritoPorId(Transport.IdUsuario);
+//            var viajes = await _carritoService.GetViajeCarritoPorId(Transport.IdUsuario);
 
-//            if (productos != null)
+//            if (viajes != null)
 //            {
-//                Productos.Clear();
-//                foreach (var producto in productos)
+//                Viajes.Clear();
+//                foreach (var viaje in viajes)
 //                {
-//                    Productos.Add(producto);
+//                    Viajes.Add(viaje);
 //                }
 //            }
 
@@ -98,10 +98,10 @@
 //    {
 //        try
 //        {
-//            // Verificar si hay productos en el carrito
-//            if (Productos.Count == 0)
+//            // Verificar si hay viajes en el carrito
+//            if (Viajes.Count == 0)
 //            {
-//                await Application.Current.MainPage.DisplayAlert("Aviso", "No tienes productos en el carrito para finalizar la compra.", "OK");
+//                await Application.Current.MainPage.DisplayAlert("Aviso", "No tienes viajes en el carrito para finalizar la compra.", "OK");
 //                return;
 //            }
 
@@ -111,15 +111,15 @@
 //                return;
 //            }
 
-//            var dtos = new List<EliminarProductoCarritoDTO>();
+//            var dtos = new List<EliminarViajeCarritoDTO>();
 
-//            foreach (var producto in Productos)
+//            foreach (var viaje in Viajes)
 //            {
-//                var dto = new EliminarProductoCarritoDTO
+//                var dto = new EliminarViajeCarritoDTO
 //                {
-//                    IdCarrito = producto.IdCarrito,
-//                    IdProducto = producto.IdProducto,
-//                    Cantidad = producto.Cantidad
+//                    IdCarrito = viaje.IdCarrito,
+//                    IdViaje = viaje.IdViaje,
+//                    Cantidad = viaje.Cantidad
 //                };
 //                dtos.Add(dto);
 //            }
@@ -127,7 +127,7 @@
 
 //            foreach (var dto in dtos)
 //            {
-//                var resultado = await _carritoService.EliminarProductoAsync(dto);
+//                var resultado = await _carritoService.EliminarViajeAsync(dto);
 //                if (!resultado)
 //                {
 //                    resultadoGeneral = false;
@@ -142,13 +142,13 @@
 //                    $"Tu paquete será entregado en: {Transport.Direccion}",
 //                    "Aceptar");
 
-//                Productos.Clear();
+//                Viajes.Clear();
 
 //                await Application.Current.MainPage.Navigation.PopToRootAsync();
 //            }
 //            else
 //            {
-//                await Application.Current.MainPage.DisplayAlert("Error", "No se pudo eliminar uno o más productos del carrito.", "OK");
+//                await Application.Current.MainPage.DisplayAlert("Error", "No se pudo eliminar uno o más viajes del carrito.", "OK");
 //            }
 //        }
 //        catch (Exception ex)

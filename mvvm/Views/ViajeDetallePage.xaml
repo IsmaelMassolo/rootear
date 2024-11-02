@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="rootear.mvvm.Views.ProductoDetallePage"
+             x:Class="rootear.mvvm.Views.ViajeDetallePage"
              xmlns:vm="clr-namespace:rootear.mvvm.ViewModels"
              xmlns:models="clr-namespace:rootear.mvvm.Models"
              xmlns:local="clr-namespace:rootear.Utils"
@@ -21,7 +21,7 @@
             <!--<Frame Padding="0" CornerRadius="5" HasShadow="True" Margin="0,10">
                 <Grid>
                     <Image 
-                        Source="{Binding Producto.RutaImagen}" 
+                        Source="{Binding Viaje.RutaImagen}" 
                         HeightRequest="270"
                         Aspect="AspectFill">
                         <Image.Clip>
@@ -39,27 +39,27 @@
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="$" FontSize="14" FontAttributes="Bold" TextColor="violet"/>
-                                <Span Text="{Binding Producto.Precio, StringFormat='{0:N2}'}" FontSize="18" FontAttributes="Bold" TextColor="violet"/>
+                                <Span Text="{Binding Viaje.Precio, StringFormat='{0:N2}'}" FontSize="18" FontAttributes="Bold" TextColor="violet"/>
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
                 </Grid>
             </Frame>
 
-            --><!-- Título del Producto --><!--
+            --><!-- Título del Viaje --><!--
             <Label 
-                Text="{Binding Producto.Titulo}"                                                
+                Text="{Binding Viaje.Titulo}"                                                
                 HorizontalOptions="Center">
                 <Label.FormattedText>
                     <FormattedString>
-                        <Span Text="{Binding Producto.Titulo}" FontSize="20" FontAttributes="Bold" TextColor="#695b97" />
+                        <Span Text="{Binding Viaje.Titulo}" FontSize="20" FontAttributes="Bold" TextColor="#695b97" />
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
 
             --><!-- Autor --><!--
             <Label 
-                Text="{Binding Producto.Autor}"                                                 
+                Text="{Binding Viaje.Autor}"                                                 
                 FontSize="12" 
                 TextColor="#352e4c" 
                 HorizontalOptions="Center"
@@ -69,54 +69,54 @@
             <StackLayout Spacing="4" HorizontalOptions="Start" >
                 --><!-- Año de edición --><!--
                 <Label 
-                    Text="{Binding Producto.AnioEdicion, StringFormat='Año de edición: {0}'}"                                                 
+                    Text="{Binding Viaje.AnioEdicion, StringFormat='Año de edición: {0}'}"                                                 
                     FontSize="12" 
                     TextColor="#195565" 
                     Margin="30,0,0,0"/>
 
                 --><!-- ISBN --><!--
                 <Label 
-                    Text="{Binding Producto.ISBN, StringFormat='ISBN: {0}'}"                                                 
+                    Text="{Binding Viaje.ISBN, StringFormat='ISBN: {0}'}"                                                 
                     FontSize="12" 
                     TextColor="#195565" 
                     Margin="30,0,0,0" />
 
                 --><!-- Páginas --><!--
                 <Label 
-                    Text="{Binding Producto.CantPaginas, StringFormat='Páginas: {0}'}"                                                 
+                    Text="{Binding Viaje.CantPaginas, StringFormat='Páginas: {0}'}"                                                 
                     FontSize="12" 
                     TextColor="#195565" 
                     Margin="30,0,0,0" />
 
                 --><!-- Editorial --><!--
                 <Label 
-                    Text="{Binding Producto.Editorial, StringFormat='Editorial: {0}'}"                                                 
+                    Text="{Binding Viaje.Editorial, StringFormat='Editorial: {0}'}"                                                 
                     FontSize="12" 
                     TextColor="#195565" 
                     Margin="30,0,0,0" />
 
                 --><!-- Idioma --><!--
                 <Label 
-                    Text="{Binding Producto.Idioma, StringFormat='Idioma: {0}'}"                                                 
+                    Text="{Binding Viaje.Idioma, StringFormat='Idioma: {0}'}"                                                 
                     FontSize="12" 
                     TextColor="#195565" 
                     Margin="30,0,0,0" />
 
                 --><!-- Idioma --><!--
                 <Label 
-                    Text="{Binding Producto.Estado, StringFormat='Estado: {0}'}"                                                 
+                    Text="{Binding Viaje.Estado, StringFormat='Estado: {0}'}"                                                 
                     FontSize="12" 
                     TextColor="#195565" 
                     Margin="30,0,0,0" />
 
                 <Label 
-                    Text="{Binding Producto.Formato, StringFormat='Formato: {0}'}"                                                 
+                    Text="{Binding Viaje.Formato, StringFormat='Formato: {0}'}"                                                 
                     FontSize="12" 
                     TextColor="#195565" 
                     Margin="30,0,0,0" />
 
                 <Label 
-                    Text="{Binding Producto.Stock, StringFormat='Nos quedan: {0}!'}"                                                 
+                    Text="{Binding Viaje.Stock, StringFormat='Nos quedan: {0}!'}"                                                 
                     FontSize="12" 
                     TextColor="#195565" 
                     Margin="30,0,0,0" />
@@ -124,9 +124,9 @@
             </StackLayout>
 
 
-            --><!-- Descripción del Producto --><!--
+            --><!-- Descripción del Viaje --><!--
             <Label 
-                Text="{Binding Producto.Sinopsis}" 
+                Text="{Binding Viaje.Sinopsis}" 
                 FontSize="12" 
                 TextColor="Black"
                 FontAttributes="Italic"
@@ -135,9 +135,9 @@
                 Margin="0,0,0,10"
                 />
 
-            --><!-- Categoría del Producto --><!--
+            --><!-- Categoría del Viaje --><!--
             <Label 
-                Text="{Binding Producto.Genero}" 
+                Text="{Binding Viaje.Genero}" 
                 FontSize="18" 
                 TextColor="Black" 
                 FontAttributes="Italic"
@@ -145,12 +145,12 @@
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="Más títulos interesantes en la categoría " FontSize="14" TextColor="Gray"/>
-                        <Span Text="{Binding Producto.Genero}" FontSize="14" FontAttributes="None" TextColor="Orange"/>
+                        <Span Text="{Binding Viaje.Genero}" FontSize="14" FontAttributes="None" TextColor="Orange"/>
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
 
-            --><!-- Rating del Producto --><!--
+            --><!-- Rating del Viaje --><!--
             <Label 
                 Text="Calificación" 
                 FontSize="14" 
@@ -169,7 +169,7 @@
             </HorizontalStackLayout>
 
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                <StackLayout BindableLayout.ItemsSource="{Binding Producto.Stock}" Orientation="Horizontal">
+                <StackLayout BindableLayout.ItemsSource="{Binding Viaje.Stock}" Orientation="Horizontal">
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
                             <Label VerticalOptions="Center" 
@@ -207,9 +207,9 @@
 
             --><!-- Botón eliminar --><!--
             <Button 
-                Text="Eliminar Producto" 
+                Text="Eliminar Viaje" 
                 BackgroundColor="#5E2B91" 
-                Command="{Binding EliminarProductoCommand}"
+                Command="{Binding EliminarViajeCommand}"
                 IsVisible="{Binding EsVisible, Converter={StaticResource IntToVisibilityConverter}}"
                 TextColor="White" 
                 CornerRadius="5"

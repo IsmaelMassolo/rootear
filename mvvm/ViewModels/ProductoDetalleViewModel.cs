@@ -9,40 +9,40 @@
 
 //namespace rootear.mvvm.ViewModels
 //{
-//    public partial class ProductoDetalleViewModel : BaseViewModel
+//    public partial class ViajeDetalleViewModel : BaseViewModel
 //    {
 //        IReservaService _carritoService;
-//        IViajeService _productoService;
-//        [ObservableProperty] Producto producto;
-//        [ObservableProperty] ProductoCarrito productoCarrito;
+//        IViajeService _viajeService;
+//        [ObservableProperty] Viaje viaje;
+//        [ObservableProperty] ViajeCarrito viajeCarrito;
 //        [ObservableProperty] private int esVisible = Transport.RolUsuario;
 
-//        public ProductoDetalleViewModel(IReservaService carritoService, IViajeService productoService)
+//        public ViajeDetalleViewModel(IReservaService carritoService, IViajeService viajeService)
 //        {
 //            Title = "Detalles";
 //            _carritoService = carritoService;
-//            _productoService = productoService;
+//            _viajeService = viajeService;
 //        }
 
 //        [RelayCommand]
 //        private async Task AgregarAlCarrito()
 //        {
 
-//            if (producto == null)
+//            if (viaje == null)
 //            {
 //                return;
 //            }
 
-//            // Agrega el nuevo producto al carrito
-//            ProductoCarritoDTO productoDTO = new ProductoCarritoDTO
+//            // Agrega el nuevo viaje al carrito
+//            ViajeCarritoDTO viajeDTO = new ViajeCarritoDTO
 //            {
 //                IdUsuario = Transport.IdUsuario,
-//                IdProducto = producto.IdProducto,
+//                IdViaje = viaje.IdViaje,
 //                Cantidad = 1
 //            };
 
-//            // Llamada al servicio para agregar el producto al carrito
-//            var resultado = await _carritoService.AgregarAlCarrito(productoDTO);
+//            // Llamada al servicio para agregar el viaje al carrito
+//            var resultado = await _carritoService.AgregarAlCarrito(viajeDTO);
 
 //            if (resultado == true)
 //            {
@@ -53,7 +53,7 @@
 //            {
 //                await Application.Current.MainPage.DisplayAlert("Ups!", "Esta vez no pudo ser...", "OK");
 //            }
-//            await Application.Current.MainPage.Navigation.PushAsync(new ProductoListaPage());
+//            await Application.Current.MainPage.Navigation.PushAsync(new ViajeListaPage());
 //        }
 
 //        [RelayCommand]
@@ -63,31 +63,31 @@
 //        }
 
 //        [RelayCommand]
-//        private async Task EliminarProductoAsync()
+//        private async Task EliminarViajeAsync()
 //        {
-//            if (producto == null)
+//            if (viaje == null)
 //            {
-//                await Application.Current.MainPage.DisplayAlert("Error", "No hay un producto seleccionado para eliminar.", "OK");
+//                await Application.Current.MainPage.DisplayAlert("Error", "No hay un viaje seleccionado para eliminar.", "OK");
 //                return;
 //            }
 
-//            bool confirm = await Application.Current.MainPage.DisplayAlert("Confirmar", "¿Estás seguro de que deseas eliminar este producto?", "Sí", "No");
+//            bool confirm = await Application.Current.MainPage.DisplayAlert("Confirmar", "¿Estás seguro de que deseas eliminar este viaje?", "Sí", "No");
 
 //            if (confirm)
 //            {
 //                try
 //                {
-//                    bool result = await _productoService.EliminarProductoAsync(producto.IdProducto);
+//                    bool result = await _viajeService.EliminarViajeAsync(viaje.IdViaje);
 
 //                    if (result)
 //                    {
-//                        await Application.Current.MainPage.DisplayAlert("Éxito", "Producto eliminado correctamente.", "OK");
+//                        await Application.Current.MainPage.DisplayAlert("Éxito", "Viaje eliminado correctamente.", "OK");
 //                        // Volver atrás en la navegación
 //                        await GoBack();
 //                    }
 //                    else
 //                    {
-//                        await Application.Current.MainPage.DisplayAlert("Error", "No se pudo eliminar el producto.", "OK");
+//                        await Application.Current.MainPage.DisplayAlert("Error", "No se pudo eliminar el viaje.", "OK");
 //                    }
 //                }
 //                catch (Exception ex)

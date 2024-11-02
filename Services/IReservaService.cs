@@ -5,10 +5,10 @@
 //public interface IReservaService
 //{
 //    Task<Carrito> GetCarritoPorId(int id);
-//    //Task<ProductoCarrito> GetProductoCarritoPorId(int id);
-//    Task<IEnumerable<ProductoCarrito>> GetProductoCarritoPorId(int id);
-//    Task<bool> AgregarAlCarrito(ProductoCarritoDTO _producto);
+//    //Task<ViajeCarrito> GetViajeCarritoPorId(int id);
+//    Task<IEnumerable<ViajeCarrito>> GetViajeCarritoPorId(int id);
+//    Task<bool> AgregarAlCarrito(ViajeCarritoDTO _viaje);
 //    Task<bool> ModificarCarro(int idUsuario, Carrito carro);
-//    Task<bool> EliminarProductoAsync(EliminarProductoCarritoDTO dto);
+//    Task<bool> EliminarViajeAsync(EliminarViajeCarritoDTO dto);
 
 //}

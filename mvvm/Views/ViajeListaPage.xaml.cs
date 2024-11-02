@@ -1,4 +1,4 @@
-using rootear.mvvm.Services;
+using rootear.Services;
 using rootear.mvvm.ViewModels;
 
 namespace rootear.mvvm.Views;

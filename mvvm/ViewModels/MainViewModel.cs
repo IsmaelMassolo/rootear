@@ -17,11 +17,11 @@ namespace rootear.mvvm.ViewModels
             await Application.Current.MainPage.Navigation.PushAsync(new ViajeListaPage());
         }
 
-        //[RelayCommand]
-        //public async Task GoToCarrito()
-        //{
-        //    await Application.Current.MainPage.Navigation.PushAsync(new CarritoPage());
-        //}
+        [RelayCommand]
+        public async Task GoToCrearViaje()
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(new ViajeAgregarPage());
+        }
 
         [RelayCommand]
         public async Task GoToUsuarioLista()

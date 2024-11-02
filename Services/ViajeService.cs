@@ -4,12 +4,11 @@ using rootear.Utils;
 using System.Text;
 using System.Text.Json;
 
-namespace rootear.mvvm.Services;
+namespace rootear.Services;
 
 public class ViajeService : IViajeService
 {
     HttpClient client;
-    static HttpClient httpClient = new HttpClient();
 
     public ViajeService()
     {
@@ -98,7 +97,7 @@ public class ViajeService : IViajeService
                     Encoding.UTF8, "application/json"
                 );
 
-            var result = await httpClient.PostAsync(Constants.CrearViajeEndpoint, content).ConfigureAwait(false);
+            var result = await client.PostAsync(Constants.CrearViajeEndpoint, content).ConfigureAwait(false);
 
             if (result.StatusCode == System.Net.HttpStatusCode.OK)
             {
@@ -108,7 +107,6 @@ public class ViajeService : IViajeService
             {
                 return false;
             }
-
         }
         catch (Exception ex)
         {

@@ -29,11 +29,6 @@ namespace rootear.mvvm.ViewModels
         [RelayCommand]
         private async Task DeshabilitarUsuarioAsync()
         {
-            if (usuario == null)
-            {
-                await Application.Current.MainPage.DisplayAlert("Error", "No hay un usuario seleccionado para eliminar.", "OK");
-                return;
-            }
 
             bool confirm = await Application.Current.MainPage.DisplayAlert("Confirmar", "¿Estás seguro de que deseas deshabilitar este usuario?", "Sí", "No");
 

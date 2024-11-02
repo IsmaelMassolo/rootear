@@ -16,20 +16,18 @@ public partial class UsuarioAgregarViewModel : BaseViewModel
     [ObservableProperty] private string email;
     [ObservableProperty] private string contrasena;
     [ObservableProperty] private string celular;
-    [ObservableProperty] private DateTime fechaNac;
+    [ObservableProperty] private DateTime fechaNac = new DateTime(2000, 1, 1);
     [ObservableProperty] private string dni;
     [ObservableProperty] private string ciudad;
     [ObservableProperty] private string provincia;
     [ObservableProperty] private string genero;
     [ObservableProperty] private string rol;
     [ObservableProperty] private string rutaImagen;
+
     [ObservableProperty] private Lugar lugarSeleccionado;
     [ObservableProperty] private string lugarBusqueda;
     [ObservableProperty] private ObservableCollection<Lugar> lugaresFiltrados = new();
-    [ObservableProperty] private List<TipoDeUsuario> listaRol;
-    [ObservableProperty] private TipoDeUsuario rolSeleccionado;
-    [ObservableProperty] private List<GeneroDeUsuario> listaGenero;
-    [ObservableProperty] private GeneroDeUsuario generoSeleccionado;
+
     private readonly IUsuarioService _usuarioService;
     private readonly ILugarService _lugarService;
 
@@ -38,8 +36,6 @@ public partial class UsuarioAgregarViewModel : BaseViewModel
         Title = Constants.AppName;
         _usuarioService = usuarioService;
         _lugarService = lugarService;
-        listaRol = GetRolValues();
-        listaGenero = GetGeneroValues();
         CargarLugaresCommand.Execute(null);
     }
 
@@ -52,6 +48,23 @@ public partial class UsuarioAgregarViewModel : BaseViewModel
     [RelayCommand]
     private async Task AgregarNuevoUsuario()
     {
+        if (string.IsNullOrWhiteSpace(Nombre) ||
+        string.IsNullOrWhiteSpace(Apellido) ||
+        string.IsNullOrWhiteSpace(UsuarioNombre) ||
+        string.IsNullOrWhiteSpace(Email) ||
+        string.IsNullOrWhiteSpace(Contrasena) ||
+        string.IsNullOrWhiteSpace(Celular) ||
+        fechaNac == default(DateTime) ||
+        string.IsNullOrWhiteSpace(dni) ||
+        string.IsNullOrWhiteSpace(ciudad) ||
+        string.IsNullOrWhiteSpace(provincia) ||
+        string.IsNullOrWhiteSpace(genero) ||
+        string.IsNullOrWhiteSpace(rol))
+
+        {
+            Application.Current.MainPage.DisplayAlert("Error", "Faltan campos obligatorios.", "Aceptar");
+            return;
+        }
 
         var registro = new UsuarioDTO
         {
@@ -63,12 +76,12 @@ public partial class UsuarioAgregarViewModel : BaseViewModel
             Celular = celular,
             FechaNac = fechaNac,
             Dni = dni,
-            Genero = GeneroSeleccionado?.Value,
-            Rol = RolSeleccionado?.Value,
+            Genero = genero,
+            Rol = rol,
             IdLugar = LugarSeleccionado?.IdLugar ?? 0,
             RutaImagen = rutaImagen/*"http://localhost:5161/Imagenes/Usuarios/" + this.usuarioNombre + ".png",*/
         };
-
+        
         try
         {
             await _usuarioService.AgregarUsuario(registro);
@@ -98,7 +111,6 @@ public partial class UsuarioAgregarViewModel : BaseViewModel
     {
         if (string.IsNullOrWhiteSpace(LugarBusqueda))
         {
-            // Mostrar todos los lugares si la búsqueda está vacía
             LugaresFiltrados = new ObservableCollection<Lugar>(LugaresFiltrados);
         }
         else
@@ -107,32 +119,8 @@ public partial class UsuarioAgregarViewModel : BaseViewModel
             var lugaresFiltrados = LugaresFiltrados
                 .Where(l => l.Ciudad.ToLower().Contains(filtro) || l.Provincia.ToLower().Contains(filtro))
                 .ToList();
-
             LugaresFiltrados = new ObservableCollection<Lugar>(lugaresFiltrados);
         }
-    }
-
-    private List<TipoDeUsuario> GetRolValues()
-    {
-        var RolValues = new List<TipoDeUsuario>()
-        {
-            new TipoDeUsuario { Key = 1, Value = "Acompañante" },
-            new TipoDeUsuario { Key = 2, Value = "Conductor" },
-            //new TipoDeUsuario { Key = 3, Value = "Administrador" }
-        };
-        return RolValues;
-    }
-
-    private List<GeneroDeUsuario> GetGeneroValues()
-    {
-        var GeneroValues = new List<GeneroDeUsuario>()
-        {
-            new GeneroDeUsuario { Key = 1, Value = "Mujer" },
-            new GeneroDeUsuario { Key = 2, Value = "Hombre" },
-            new GeneroDeUsuario { Key = 3, Value = "Binario" },
-            new GeneroDeUsuario { Key = 3, Value = "Prefiero no decirlo" }
-        };
-        return GeneroValues;
     }
 
     [RelayCommand]

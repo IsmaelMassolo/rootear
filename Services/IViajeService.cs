@@ -1,7 +1,6 @@
 ﻿using rootear.mvvm.Models;
 using rootear.mvvm.Models.DTO;
-
-namespace rootear.mvvm.Services;
+namespace rootear.Services;
 
 public interface IViajeService
 {

@@ -1,5 +1,5 @@
 ﻿using rootear.mvvm.Models;
-using rootear.mvvm.Services;
+using rootear.Services;
 using rootear.mvvm.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -82,17 +82,19 @@ namespace rootear.mvvm.ViewModels
             }
             else
             {
-                var filtrado = Viajes.Where(v => v.Destino.Ciudad.Contains(SearchText, StringComparison.OrdinalIgnoreCase));
+                var filtrado = Viajes.Where(v =>
+                v.Destino.Ciudad.Contains(SearchText, StringComparison.OrdinalIgnoreCase) ||
+                v.Origen.Ciudad.Contains(SearchText, StringComparison.OrdinalIgnoreCase));
                 ViajesFiltrados.Clear();
                 foreach (var viaje in filtrado)
-                    ViajesFiltrados.Add(viaje);
+                ViajesFiltrados.Add(viaje);
             }
         }
 
         [RelayCommand]
         private async Task NuevoViaje()
         {
-            //await Application.Current.MainPage.Navigation.PushAsync(new ViajeAgregarPage());
+            await Application.Current.MainPage.Navigation.PushAsync(new ViajeAgregarPage());
         }
 
         [RelayCommand]

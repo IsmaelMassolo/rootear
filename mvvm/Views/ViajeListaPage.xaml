@@ -6,7 +6,6 @@
              xmlns:models="clr-namespace:rootear.mvvm.Models"
              xmlns:local="clr-namespace:rootear.Utils"
              x:DataType="vm:ViajeListaViewModel"
-             Title="{Binding Title}"
              BackgroundColor="#695b97">
 
     <ContentPage.Resources>
@@ -16,22 +15,27 @@
     </ContentPage.Resources>
 
     <Grid Padding="5">
-        <RefreshView Grid.ColumnSpan="2" Command="{Binding GetViajesCommand}" IsRefreshing="{Binding IsRefreshing}">
+        <RefreshView Command="{Binding GetViajesCommand}" IsRefreshing="{Binding IsRefreshing}">
+            
             <ScrollView>
-                <StackLayout Padding="0,0,0,0">
+                <StackLayout Padding="10,10,10,0">
+                    
                     <StackLayout
                         Orientation="Horizontal"
                         Padding="15">
-                        <Entry Placeholder="Buscar viaje..."
+                        <Entry Placeholder="Buscar ciudad destino/origen"
                             Text="{Binding SearchText, Mode=TwoWay}"
                             BackgroundColor="White"
                             TextColor="Black"
-                            HorizontalOptions="FillAndExpand" />
+                            HorizontalOptions="FillAndExpand"
+                            FontSize="12"/>
+                        
                         <Button Text="Buscar"
                             Command="{Binding BuscarCommand}"
                             BackgroundColor="#d47653"
                             TextColor="White" 
-                            Margin="10,0,0,0"/>
+                            Margin="10,0,0,0"
+                            FontSize="13"/>
                     </StackLayout>
 
                     <CollectionView
@@ -40,37 +44,29 @@
                         SelectionMode="Single"
                         SelectedItem="{Binding ViajeSeleccionado}"
                         SelectionChangedCommand="{Binding GoToDetailCommand}">
-                        <CollectionView.EmptyView>
-                            <StackLayout Padding="100">
-                                <Image Source="sin_senial.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
-                            </StackLayout>
-                        </CollectionView.EmptyView>
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate x:DataType="models:Viaje">
-                                <Frame
-                                    Margin="0,6,0,0"
-                                    Padding="10"
-                                    CornerRadius="10"
-                                    HasShadow="False"
-                                    BorderColor="AntiqueWhite"
-                                    BackgroundColor="AntiqueWhite">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="Auto" />
-                                        </Grid.ColumnDefinitions>
-                                        <!--<Image Source="{Binding RutaImagen}"
-                                                WidthRequest="100"
-                                                HeightRequest="100"
-                                                Aspect="AspectFill">
-                                            <Image.Clip>
-                                                <EllipseGeometry 
-                                                    Center="50,50"
-                                                    RadiusX="70"
-                                                    RadiusY="70"/>
-                                            </Image.Clip>
-                                        </Image>-->
+                        
+                    <CollectionView.EmptyView>
+                        <StackLayout Padding="100">
+                            <Image Source="sin_senial.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                        </StackLayout>
+                    </CollectionView.EmptyView>
+                    
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Viaje">
+                            <Frame
+                                Margin="15,15,15,15"
+                                Padding="6"
+                                CornerRadius="10"
+                                HasShadow="False"
+                                BorderColor="Transparent"
+                                BackgroundColor="#f6f5f3">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                     
                                         <StackLayout
                                             Grid.Column="1"
                                             Padding="20,10,20,0">
@@ -148,28 +144,31 @@
                 </StackLayout>
             </ScrollView>
         </RefreshView>
-        <Button Text="+" 
-                Command="{Binding NuevoViajeCommand}" 
-                IsVisible="{Binding EsVisible, Converter={StaticResource IntToVisibilityConverter}}"
-                BackgroundColor="#2a8ea8" 
-                TextColor="White" 
-                HorizontalOptions="End"
-                VerticalOptions="End"
-                Margin="0,20,25,25" 
-                WidthRequest="65" 
-                HeightRequest="65" 
-                CornerRadius="40"
-                FontSize="40" />
-        <Button Text="☰" 
-                 Command="{Binding GoToMainPageCommand}" 
-                 BackgroundColor="#FF6666" 
-                 TextColor="White" 
-                 HorizontalOptions="Start"
-                 VerticalOptions="End"
-                 Margin="25,20,0,25" 
-                 WidthRequest="60" 
-                 HeightRequest="60" 
-                 CornerRadius="10"
-                 FontSize="30" />
+
+        <Button 
+            Command="{Binding NuevoViajeCommand }"
+            Text="+" 
+            Margin="0,20,20,25" 
+            BackgroundColor="#1CBBD4" 
+            TextColor="White"
+            HorizontalOptions="End"
+            VerticalOptions="End"
+            WidthRequest="60" 
+            HeightRequest="50" 
+            CornerRadius="10"
+            FontSize="30" 
+            FontAttributes="Bold"/>
+        
+        <Button Text="X" 
+         Command="{Binding GoToMainPageCommand}" 
+         BackgroundColor="#ff6666" TextColor="White"
+         HorizontalOptions="Start"
+         VerticalOptions="End"
+         Margin="20,20,0,25" 
+         WidthRequest="60" 
+         HeightRequest="50" 
+         CornerRadius="10"
+         FontSize="20" 
+         FontAttributes="Bold"/>
     </Grid>
 </ContentPage>

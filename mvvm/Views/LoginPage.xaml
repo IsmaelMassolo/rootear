@@ -5,7 +5,7 @@
              xmlns:viewModels="clr-namespace:rootear.mvvm.ViewModels"
              x:DataType="viewModels:LoginViewModel" 
              Title="{Binding Title}"
-             BackgroundColor="#752092">
+             BackgroundColor="#695b97">
 
 
     <VerticalStackLayout Padding="20" Spacing="25" VerticalOptions="Center">
@@ -53,7 +53,8 @@
                 TextColor="White"
                 CornerRadius="05"
                 WidthRequest="250"
-                HorizontalOptions="Center" />
+                HorizontalOptions="Center"
+                FontAttributes="Bold"/>
 
         <ActivityIndicator IsRunning="{Binding IsBusy}" 
                 Color="Violet" 

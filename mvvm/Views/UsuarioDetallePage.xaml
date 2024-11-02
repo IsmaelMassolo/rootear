@@ -6,36 +6,30 @@
              xmlns:models="clr-namespace:rootear.mvvm.Models"
              xmlns:local="clr-namespace:rootear.Utils"
              x:DataType="vm:UsuarioDetalleViewModel"
-             BackgroundColor="#9093E0"
-             Title="{Binding Title}">
+             BackgroundColor="#3DD6AF">
 
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:IntToVisibilityConverter x:Key="IntToVisibilityConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
+    
+    <Grid Padding="5">
+        <ScrollView>
+        <VerticalStackLayout Margin="10,10,10,100" Spacing="15" HorizontalOptions="Center">
 
-    <ScrollView>
-        <VerticalStackLayout Margin="5" Spacing="15" HorizontalOptions="Center">
-
-            <Frame Padding="0" CornerRadius="5" HasShadow="True" Margin="0,10">
+            <Frame Padding="0" CornerRadius="25" HasShadow="False" Margin="10,10,10,0" BorderColor="Transparent">
                 <Grid>
-                    <Image 
-                        Source="{Binding Usuario.RutaImagen}" 
-                        HeightRequest="270"
-                        Aspect="AspectFill">
-                        <Image.Clip>
-                            <EllipseGeometry 
-                                Center="150,-50" 
-                                RadiusX="410" 
-                                RadiusY="410" />
-                        </Image.Clip>
-                    </Image>
+                        <Image 
+                            Source="{Binding Usuario.RutaImagen}" 
+                            Aspect="AspectFill" 
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand"/>
 
-                    <Label 
-                        HorizontalOptions="End"
-                        VerticalOptions="End"
-                        Margin="0, 0, 10, 10">
+                        <Label 
+                            HorizontalOptions="End"
+                            VerticalOptions="End"
+                            Margin="0, 0, 10, 10">
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="Soy " FontSize="14" FontAttributes="Bold" TextColor="violet"/>
@@ -46,104 +40,115 @@
                 </Grid>
             </Frame>
 
-            <Label 
-                Text="{Binding Usuario.Nombre}"                                                
-                HorizontalOptions="Center">
+            <Label Text="{Binding Usuario.UsuarioNombre}" HorizontalOptions="Center" Margin="10,10,10,0">
                 <Label.FormattedText>
                     <FormattedString>
-                        <Span Text="{Binding Usuario.UsuarioNombre}" FontSize="20" FontAttributes="Bold" TextColor="DarkSlateGrey" />
+                        <Span Text="{Binding Usuario.UsuarioNombre}" FontSize="24" FontAttributes="Bold" TextColor="DarkSlateGrey" />
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
+            <Label FontSize="14" 
+                   TextColor="Black" 
+                   HorizontalOptions="Center"
+                  Margin="10,-10,10,0">
+                <Label.Text>
+                    <MultiBinding StringFormat="{}{0} {1}">
+                        <Binding Path="Usuario.Nombre"/>
+                        <Binding Path="Usuario.Apellido"/>
+                     </MultiBinding>
+                </Label.Text>
+            </Label>
 
-            <!-- Autor -->
+            <Frame Padding="0" Margin="10,0,10,0" CornerRadius="15" HasShadow="True" BackgroundColor="#99FFE09E" BorderColor="Transparent">
+                <StackLayout Spacing="4" HorizontalOptions="Start" >
+                    <Label 
+                        Text="{Binding Usuario.Edad, StringFormat='Edad: {0}'}"                                                 
+                        FontSize="12" 
+                        TextColor="Black" 
+                        Margin="30,10,0,0"/>
+
+                    <Label 
+                        Text="{Binding Usuario.Email, StringFormat='Email: {0}'}"                                                 
+                        FontSize="12" 
+                        TextColor="Black" 
+                        Margin="30,0,0,0" />
+
+                    <Label 
+                        Text="{Binding Usuario.Celular, StringFormat='Celular: {0}'}"                                                 
+                        FontSize="12" 
+                        TextColor="Black" 
+                        Margin="30,0,0,0" />
+
+                    <Label 
+                        Text="{Binding Usuario.Genero, StringFormat='Genero: {0}'}"                                                 
+                        FontSize="12" 
+                        TextColor="Black" 
+                        Margin="30,0,0,0" />
+
+                    <Label 
+                        Text="{Binding Usuario.ActivoDesde, StringFormat='Activo desde: {0}'}"                                                 
+                        FontSize="12" 
+                        TextColor="Black" 
+                        Margin="30,0,0,0" />
+
+                    <Label 
+                        Text="{Binding Usuario.Lugar.Ciudad, StringFormat='Ciudad: {0}'}"                                                 
+                        FontSize="12" 
+                        TextColor="Black" 
+                        Margin="30,0,0,0" />
+
+                     <Label 
+                        Text="{Binding Usuario.Lugar.Provincia, StringFormat='Provincia: {0}'}"                                                 
+                        FontSize="12" 
+                        TextColor="Black" 
+                        Margin="30,0,0,20" />
+
+                </StackLayout>
+            </Frame>
+
             <Label 
-                Text="{Binding Usuario.Nombre}"                                                 
-                FontSize="14" 
+                Text="Vehículo" FontSize="14" 
                 TextColor="Black" 
                 HorizontalOptions="Center"
-                Margin="0,-10,0,0"/>
+                Margin="10,10,10,0"></Label>
+            
+            <Frame Padding="0" Margin="10,0,10,0" CornerRadius="15" HasShadow="True" BackgroundColor="#99FFE09E" BorderColor="Transparent">
+                <StackLayout Spacing="4" HorizontalOptions="Start" >
 
-            <!-- Contenedor para detalles del libro, más juntos -->
-            <StackLayout Spacing="4" HorizontalOptions="Start" >
-                <!-- Año de edición -->
-                <Label 
-                    Text="{Binding Usuario.Edad, StringFormat='Edad: {0}'}"                                                 
-                    FontSize="14" 
-                    TextColor="Black" 
-                    Margin="30,0,0,0"/>
+                    <Label 
+                        Text="{Binding Usuario.Vehiculo.Marca, StringFormat='Vehiculo: {0}'}"                                                 
+                        FontSize="12" 
+                        TextColor="Black" 
+                        Margin="30,10,0,0"/>
+                        <Label 
+                        Text="{Binding Usuario.Vehiculo.Modelo, StringFormat='Modelo: {0}!'}"                                                 
+                        FontSize="12" 
+                        TextColor="Black" 
+                        Margin="30,0,0,0" />
+                        <Label 
+                        Text="{Binding Usuario.Vehiculo.CantPlazas, StringFormat='Lugares en Vehiculo: {0}!'}"                                                 
+                        FontSize="12" 
+                        TextColor="Black" 
+                        Margin="30,0,0,0" />
+                        <Label 
+                        Text="{Binding Usuario.Vehiculo.EspacioGuardado, StringFormat='Espacio de guardado: {0}!'}"                                                 
+                        FontSize="12" 
+                        TextColor="Black" 
+                        Margin="30,0,0,0" />
+                        <Label 
+                        Text="{Binding Usuario.Vehiculo.EspacioGuardado, StringFormat='Espacio de guardado: {0}!'}"                                                 
+                        FontSize="12" 
+                        TextColor="Black" 
+                        Margin="30,0,0,0" />
+                        <Label 
+                        Text="{Binding Usuario.Vehiculo.Patente, StringFormat='Espacio de guardado: {0}!'}"                                                 
+                        FontSize="12" 
+                        TextColor="Black" 
+                        Margin="30,0,0,0" />
 
-                <!-- ISBN -->
-                <Label 
-                    Text="{Binding Usuario.Email, StringFormat='Email: {0}'}"                                                 
-                    FontSize="14" 
-                    TextColor="Black" 
-                    Margin="30,0,0,0" />
+                    </StackLayout>
+            </Frame>
 
-                <Label 
-                    Text="{Binding Usuario.Celular, StringFormat='Celular: {0}'}"                                                 
-                    FontSize="14" 
-                    TextColor="Black" 
-                    Margin="30,0,0,0" />
-                
-
-                <!-- Páginas -->
-                <Label 
-                    Text="{Binding Usuario.Genero, StringFormat='Genero: {0}'}"                                                 
-                    FontSize="14" 
-                    TextColor="Black" 
-                    Margin="30,0,0,0" />
-
-                <!-- Editorial -->
-                <Label 
-                    Text="{Binding Usuario.ActivoDesde, StringFormat='Activo desde: {0}'}"                                                 
-                    FontSize="14" 
-                    TextColor="Black" 
-                    Margin="30,0,0,0" />
-
-                <!-- Idioma -->
-                <Label 
-                    Text="{Binding Usuario.Lugar.Ciudad, StringFormat='Ciudad: {0}'}"                                                 
-                    FontSize="14" 
-                    TextColor="Black" 
-                    Margin="30,0,0,0" />
-
-                <!-- Idioma -->
-                <Label 
-                    Text="{Binding Usuario.Lugar.Provincia, StringFormat='Provincia: {0}'}"                                                 
-                    FontSize="14" 
-                    TextColor="Black" 
-                    Margin="30,0,0,0" />
-
-                <Label 
-                    Text="{Binding Usuario.Vehiculo.Marca, StringFormat='Vehiculo: {0}'}"                                                 
-                    FontSize="14" 
-                    TextColor="Black" 
-                    Margin="30,0,0,0" />
-
-                <Label 
-                    Text="{Binding Usuario.Vehiculo.CantPlazas, StringFormat='Lugares en Vehiculo: {0}!'}"                                                 
-                    FontSize="14" 
-                    TextColor="Black" 
-                    Margin="30,0,0,0" />
-
-            </StackLayout>
-
-
-            <!-- Descripción del Producto -->
-            <Label 
-                Text="{Binding Usuario.Reserva.DetallesReservas.Count,StringFormat='Ha viajado: {0} veces!'}" 
-                FontSize="12" 
-                TextColor="Black"
-                FontAttributes="Italic"
-                HorizontalOptions="Center" 
-                LineBreakMode="WordWrap"
-                Margin="0,0,0,10"
-                />
-
-
-
-            <!-- Rating del Producto -->
             <Label 
                 Text="Calificación" 
                 FontSize="14" 
@@ -154,43 +159,39 @@
 
             <HorizontalStackLayout HorizontalOptions="Center" Spacing="4">
                 <Label Text="★" FontSize="24" TextColor="#e9ad41" />
-                <!-- Estrella llena -->
                 <Label Text="★" FontSize="24" TextColor="#e9ad41" />
                 <Label Text="★" FontSize="24" TextColor="#e9ad41" />
                 <Label Text="★" FontSize="24" TextColor="#e9ad41" />
                 <Label Text="★" FontSize="24" TextColor="#e9ad41" />
             </HorizontalStackLayout>
 
-
-            <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="Center">
-                <Button 
-                    Text="Volver a la lista" 
-                    Margin="10,10,0,0" 
-                    BackgroundColor="#a75b60" 
-                    Command="{Binding GoBackCommand}" 
-                    TextColor="White" 
-                    CornerRadius="5"
-                    HeightRequest="15"
-                    WidthRequest="150"/>
-
-            </StackLayout>
-
-
-            <Button 
-                Text="Deshabilitar Usuario" 
-                BackgroundColor="#5E2B91" 
-                Command="{Binding DeshabilitarUsuarioCommand}"
-                IsVisible="{Binding EsVisible, Converter={StaticResource IntToVisibilityConverter}}"
-                TextColor="White" 
-                CornerRadius="5"
-                HorizontalOptions="Center" 
-                VerticalOptions="Center"
-                WidthRequest="200" 
-                HeightRequest="50" 
-                Margin="0,0,0,10"/>
-
-
-
         </VerticalStackLayout>
     </ScrollView>
+    <Button Text="X" 
+         Command="{Binding GoBackCommand}" 
+         BackgroundColor="#ff6666" TextColor="White"
+         HorizontalOptions="Start"
+         VerticalOptions="End"
+         Margin="20,20,0,25" 
+         WidthRequest="60" 
+         HeightRequest="50" 
+         CornerRadius="10"
+         FontSize="20" 
+         FontAttributes="Bold"/>
+
+    <Button 
+        Margin="0,20,20,25" 
+        Text="Deshabilitar Usuario" 
+        BackgroundColor="Black" 
+        Command="{Binding DeshabilitarUsuarioCommand}"
+        IsVisible="{Binding EsVisible, Converter={StaticResource IntToVisibilityConverter}}"
+        TextColor="White"
+        HorizontalOptions="End"
+        VerticalOptions="End"
+        WidthRequest="230" 
+        HeightRequest="50"
+        CornerRadius="10"
+        FontSize="14" 
+        FontAttributes="Bold"/>
+    </Grid>
 </ContentPage>

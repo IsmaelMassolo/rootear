@@ -1,18 +1,18 @@
 using rootear.mvvm.Models;
-using rootear.mvvm.Services;
+using rootear.Services;
 using rootear.mvvm.ViewModels;
 
 namespace rootear.mvvm.Views;
 
-public partial class ProductoDetallePage : ContentPage
+public partial class ViajeDetallePage : ContentPage
 {
-    public ProductoDetallePage(Viaje param)
+    public ViajeDetallePage(Viaje param)
     {
         //InitializeComponent();
-        //ProductoService producto = new ProductoService();
+        //ViajeService viaje = new ViajeService();
         //CarritoService service = new CarritoService();
-        //ProductoDetalleViewModel vm = new ProductoDetalleViewModel(service, producto);
+        //ViajeDetalleViewModel vm = new ViajeDetalleViewModel(service, viaje);
         //this.BindingContext = vm;
-        //vm.Producto = param;
+        //vm.Viaje = param;
     }
 }

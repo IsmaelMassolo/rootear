@@ -6,107 +6,109 @@
              xmlns:local="clr-namespace:rootear.Utils"
                x:Class="rootear.mvvm.Views.UsuarioListaPage"
              x:DataType="vm:UsuarioListaViewModel"
-             BackgroundColor="#3DD6AF"
-             Title="Lista de nuestros usuarios">
+             BackgroundColor="#3DD6AF">
 
 
     <Grid Padding="5">
-    <RefreshView Command="{Binding GetUsuariosCommand}" IsRefreshing="{Binding IsRefreshing}">
-        <ScrollView>
-            <StackLayout Padding="10,10,10,0">
-                <!-- Lista de Usuarios -->
+        <RefreshView Command="{Binding GetUsuariosCommand}" IsRefreshing="{Binding IsRefreshing}">
+        
+            <ScrollView>
+            <StackLayout Padding="10,20,10,0">
+
                 <CollectionView ItemsSource="{Binding Usuarios}"
                                 SelectionMode="Single"
                                 SelectedItem="{Binding UsuarioSeleccionado}"
                                 SelectionChangedCommand="{Binding GoToDetailCommand}">
-                    <CollectionView.EmptyView>
-                        <StackLayout Padding="100">
-                            <Image Source="asdf.jpg" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
-                        </StackLayout>
-                    </CollectionView.EmptyView>
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="models:Usuario">
-                            <Frame Margin="15,15,15,15"
-                                   Padding="6"
-                                   CornerRadius="10"
-                                   HasShadow="False"
-                                   BackgroundColor="#f6f5f3">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions>
-                                        <Image Source="{Binding RutaImagen}"
-                                           WidthRequest="100"
-                                           HeightRequest="100"
-                                           Aspect="AspectFill">
-                                            <Image.Clip>
-                                                <EllipseGeometry Center="50,50"
-                                                             RadiusX="50"
-                                                             RadiusY="50"/>
-                                        </Image.Clip>
-                                    </Image>
-                                    <StackLayout Grid.Column="1"
-                                                 Padding="20,0,20,0">
-                                            <Label FontSize="14"
-                                                   TextColor="#2f4574"
-                                                   FontAttributes="Bold"
-                                                   Padding="20,5,0,5">
-                                                <Label.Text>
-                                                    <MultiBinding StringFormat="{}{0} {1}">
-                                                        <Binding Path="Nombre"/>
-                                                        <Binding Path="Apellido"/>
-                                                    </MultiBinding>
-                                                </Label.Text>
-                                            </Label>
+                    
+                <CollectionView.EmptyView>
+                    <StackLayout Padding="100">
+                        <Image Source="asdf.jpg" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                    </StackLayout>
+                </CollectionView.EmptyView>
+                    
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Usuario">
+                        <Frame Margin="15,15,15,15"
+                            Padding="6"
+                            CornerRadius="10"
+                            HasShadow="False"
+                            BackgroundColor="#f6f5f3"
+                            BorderColor="Transparent">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            
+                            <Image Source="{Binding RutaImagen}"
+                                WidthRequest="100"
+                                HeightRequest="100"
+                                Aspect="AspectFill">
+                                <Image.Clip>
+                                    <EllipseGeometry Center="50,50" RadiusX="50" RadiusY="50"/>
+                                </Image.Clip>
+                            </Image>
+                            
+                            <StackLayout Grid.Column="1"
+                                Padding="0,0,20,0">
+                                <Label FontSize="12"
+                                TextColor="Black"
+                                FontAttributes="Bold"
+                                Padding="20,5,0,5">
+                            
+                            <Label.Text>
+                                <MultiBinding StringFormat="{}{0} {1}">
+                                    <Binding Path="Nombre"/>
+                                    <Binding Path="Apellido"/>
+                                    </MultiBinding>
+                                    </Label.Text>
+                                    </Label>
 
+                            <Label Text="{Binding UsuarioNombre}"
+                                FontSize="22"                                               
+                                TextColor="Black"
+                                MaxLines="1"
+                                Padding="20,0,0,0"
+                                LineBreakMode="TailTruncation" />
 
-                                            <Label Text="{Binding UsuarioNombre}"
-                                               FontSize="22"                                               
-                                               TextColor="#792a48"
-                                               MaxLines="1"
-                                               Padding="20,0,0,0"
-                                               LineBreakMode="TailTruncation" />
-
-                                            <Label Text="{Binding Rol}"
-                                               FontSize="12"                                               
-                                               TextColor="#792a48"
-                                               MaxLines="1"
-                                               Padding="20,0,0,5"
-                                               LineBreakMode="TailTruncation" />
-                                        
-                                            <Label FontSize="12"
-                                                   TextColor="#2f4574"
-                                                   FontAttributes="Bold"
-                                                   Padding="20,5,0,5">
-                                                <Label.Text>
-                                                    <MultiBinding StringFormat="{}{0} {1}">
-                                                        <Binding Path="Lugar.Ciudad"/>
-                                                        <Binding Path="Lugar.Provincia"/>
-                                                    </MultiBinding>
-                                                </Label.Text>
-                                            </Label>
-                                    </StackLayout>
-                                </Grid>
+                            <Label Text="{Binding Rol}"
+                                FontSize="12"                                               
+                                TextColor="#792a48"
+                                MaxLines="1"
+                                Padding="20,0,0,5"
+                                LineBreakMode="TailTruncation" />
+                                
+                            <Label FontSize="12"
+                                TextColor="#2f4574"
+                                FontAttributes="Bold"
+                                Padding="20,5,0,5">
+                                <Label.Text>
+                                    <MultiBinding StringFormat="{}{0} {1}">
+                                        <Binding Path="Lugar.Ciudad"/>
+                                        <Binding Path="Lugar.Provincia"/>
+                                    </MultiBinding>
+                                </Label.Text>
+                            </Label>
+                            </StackLayout>
+                            </Grid>
                             </Frame>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
             </StackLayout>
         </ScrollView>
-        
     </RefreshView>
-
-        <Button Text="☰" 
-                 Command="{Binding GoToMainPageCommand}" 
-                 BackgroundColor="#ff6666" TextColor="White"
-                 HorizontalOptions="Start"
-                 VerticalOptions="End"
-                 Margin="25,20,0,25" 
-                 WidthRequest="60" 
-                 HeightRequest="60" 
-                 CornerRadius="10"
-                 FontSize="30" />
+        <Button Text="X" 
+         Command="{Binding GoToMainPageCommand}" 
+         BackgroundColor="#ff6666" TextColor="White"
+         HorizontalOptions="Start"
+         VerticalOptions="End"
+         Margin="20,20,0,25" 
+         WidthRequest="60" 
+         HeightRequest="50" 
+         CornerRadius="10"
+         FontSize="20" 
+         FontAttributes="Bold"/>
     </Grid>
 </ContentPage>
