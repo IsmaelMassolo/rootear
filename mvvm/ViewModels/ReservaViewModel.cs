@@ -30,36 +30,7 @@ public partial class ReservaViewModel : BaseViewModel
         _reservaService = reservaService;
     }
 
-    [RelayCommand]
-    private async Task EliminarViajeAsync(DetalleReserva viaje)
-    {
-        try
-        {
-            var dto = new DetalleReservaDTO
-            {
-                IdSalaReserva = viaje.IdSalaReserva,
-                IdViaje = viaje.IdViaje,
-                FechaAgregado = viaje.FechaAgregado
-            };
 
-            // Llamar al servicio para eliminar el viaje
-            var resultado = await _reservaService.EliminarViajeAsync(dto);
-
-            if (resultado)
-            {
-                // Si es exitoso, eliminar el viaje localmente
-                Viajes.Remove(viaje);
-            }
-            else
-            {
-                await Application.Current.MainPage.DisplayAlert("Error", "No se pudo eliminar el viaje.", "OK");
-            }
-        }
-        catch (Exception ex)
-        {
-            await Application.Current.MainPage.DisplayAlert("Error", ex.Message, "OK");
-        }
-    }
 
 
     [RelayCommand]
@@ -101,7 +72,7 @@ public partial class ReservaViewModel : BaseViewModel
         {
             return;
         }
-        //await Application.Current.MainPage.Navigation.PushAsync(new ViajeDetallePage(viajeSeleccionado), true);
+        await Application.Current.MainPage.Navigation.PushAsync(new ReservaDetallePage(viajeSeleccionado), true);
     }
 
     [RelayCommand]
