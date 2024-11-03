@@ -21,7 +21,6 @@ namespace rootear.mvvm.ViewModels
 
         public ViajeListaViewModel(IViajeService viajeService)
         {
-            Title = "Nuestros libros ;)";
             _viajeService = viajeService;
             Viajes.CollectionChanged += (s, e) => FiltrarViajes();
             ViajesFiltrados.CollectionChanged += (s, e) => OnPropertyChanged(nameof(ViajesFiltrados));

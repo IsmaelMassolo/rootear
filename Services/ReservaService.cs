@@ -18,51 +18,19 @@ public class ReservaService : IReservaService
     {
         client = new HttpClient();
     }
-    public async Task<Reserva> GetReservasPorId(int idUsuario) //sala de reserva
+
+    public async Task<IEnumerable<Viaje>> GetDetalleReservaPorId()
     {
         try
         {
-            var response = await client.GetAsync($"{Constants.ReservasEndpoint}/{idUsuario}");
+            var response = await client.GetAsync($"{Constants.DetalleReservaEndpoint}/{Transport.IdSalaReserva}");
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 var jsonData = await response.Content.ReadAsStringAsync();
                 if (!string.IsNullOrWhiteSpace(jsonData))
                 {
-                    var responseObject = JsonSerializer.Deserialize<Reserva>(jsonData, new JsonSerializerOptions
-                    {
-                        PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-                        WriteIndented = true
-                    });
-
-                    return responseObject!;
-                }
-                else
-                {
-                    throw new Exception("No se encontraron datos.");
-                }
-            }
-            else
-            {
-                throw new Exception($"Falló la petición con el código de estado {response.StatusCode}");
-            }
-        }
-        catch (Exception exception)
-        {
-            throw new Exception($"Error al obtener el la sala de reserva del usuario: {exception.Message}");
-        }
-    }
-
-    public async Task<IEnumerable<DetalleReserva>> GetDetalleReservaPorId(int id)
-    {
-        try
-        {
-            var response = await client.GetAsync($"{Constants.DetalleReservaEndpoint}/{Transport.IdUsuario}");
-            if (response.StatusCode == System.Net.HttpStatusCode.OK)
-            {
-                var jsonData = await response.Content.ReadAsStringAsync();
-                if (!string.IsNullOrWhiteSpace(jsonData))
-                {
-                    var responseObject = JsonSerializer.Deserialize<IEnumerable<DetalleReserva>>(jsonData,
+                    // Deserializar como una lista de DetalleReserva
+                    var responseObject = JsonSerializer.Deserialize<IEnumerable<Viaje>>(jsonData,
                         new JsonSerializerOptions
                         {
                             PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
@@ -72,7 +40,7 @@ public class ReservaService : IReservaService
                 }
                 else
                 {
-                    throw new Exception("Recurso no encontrado");
+                    throw new Exception("Resource Not Found");
                 }
             }
             else
@@ -117,67 +85,38 @@ public class ReservaService : IReservaService
         }
     }
 
-    //public async Task<bool> ModificarCarro(int idUsuario, Reserva carro)
-    //{
-    //    try
-    //    {
-    //        // Serializamos el objeto modificado a JSON
-    //        var jsonViaje = JsonSerializer.Serialize(carro, new JsonSerializerOptions
-    //        {
-    //            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-    //            WriteIndented = true
-    //        });
+    public async Task<bool> EliminarViajeAsync(DetalleReservaDTO dto)
+    {
+        try
+        {
+            // Serializamos el objeto a JSON
+            var jsonProducto = JsonSerializer.Serialize(dto, new JsonSerializerOptions
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                WriteIndented = true
+            });
 
-    //        // Creamos el contenido que se enviará en la solicitud PUT
-    //        var content = new StringContent(jsonViaje, Encoding.UTF8, "application/json");
+            // Creamos el contenido JSON para enviarlo en la solicitud
+            var content = new StringContent(jsonProducto, Encoding.UTF8, "application/json");
 
-    //        // Realizamos la solicitud PUT al endpoint específico
-    //        var response = await client.PutAsync($"{Constants.ModificaCarroEndpoint}/{idUsuario}", content);
+            // Construimos la solicitud de tipo DELETE con un cuerpo JSON
+            var request = new HttpRequestMessage
+            {
+                Method = HttpMethod.Delete,
+                RequestUri = new Uri(Constants.EliminarDetalleReservaEndpoint),
+                Content = content
+            };
 
-    //        // Verificamos si la respuesta es exitosa
-    //        if (response.StatusCode == System.Net.HttpStatusCode.NoContent ||
-    //            response.StatusCode == System.Net.HttpStatusCode.OK)
-    //        {
-    //            return true; // Se modificó correctamente
-    //        }
-    //        else
-    //        {
-    //            Exception exception = new Exception($"Error al modificar el viaje. Código de estado: {response.StatusCode}");
-    //            throw new Exception(exception.Message);
-    //        }
-    //    }
-    //    catch (Exception exception)
-    //    {
-    //        throw new Exception($"Error en la solicitud: {exception.Message}");
-    //    }
-    //}
+            // Enviamos la solicitud
+            var response = await client.SendAsync(request);
 
-    //public async Task<bool> EliminarViajeAsync(EliminarDetalleReservaDTO dto)
-    //{
-    //    try
-    //    {
-    //        var jsonViaje = JsonSerializer.Serialize(dto, new JsonSerializerOptions
-    //        {
-    //            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-    //            WriteIndented = true
-    //        });
-
-    //        var content = new StringContent(jsonViaje, Encoding.UTF8, "application/json");
-
-    //        var request = new HttpRequestMessage
-    //        {
-    //            Method = HttpMethod.Delete,
-    //            RequestUri = new Uri(Constants.EliminarDetalleReservaEndpoint),
-    //            Content = content
-    //        };
-
-    //        var response = await client.SendAsync(request);
-
-    //        return response.IsSuccessStatusCode;
-    //    }
-    //    catch (Exception)
-    //    {
-    //        return false;
-    //    }
-    //}
+            // Verificamos si la solicitud fue exitosa
+            return response.IsSuccessStatusCode;
+        }
+        catch (Exception)
+        {
+            // Manejo de errores, en este caso devolvemos false si falla
+            return false;
+        }
+    }
 }

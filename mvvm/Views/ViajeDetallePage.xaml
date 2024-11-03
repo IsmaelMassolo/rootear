@@ -6,24 +6,22 @@
              xmlns:models="clr-namespace:rootear.mvvm.Models"
              xmlns:local="clr-namespace:rootear.Utils"
              x:DataType="vm:ViajeDetalleViewModel"
-             BackgroundColor="#eeefef">
+             BackgroundColor="#695B97">
 
     <Grid Padding="5">
         <ScrollView>
             <VerticalStackLayout Margin="10,10,10,100" Spacing="15" HorizontalOptions="Center">
 
-                <Frame Padding="0" CornerRadius="25" HasShadow="False" Margin="10,10,10,0" BorderColor="Transparent">
+                <Frame Padding="0" CornerRadius="15" HasShadow="False" Margin="0,0,0,0" BorderColor="Transparent" HeightRequest="300">
                     <Grid>
-                        <!--<Image 
-                            Source="{Binding Usuario.RutaImagen}" 
-                            Aspect="AspectFill" 
-                            HorizontalOptions="FillAndExpand"
-                            VerticalOptions="FillAndExpand"/>-->
+                        <WebView x:Name="mapWebView"
+                                 HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="FillAndExpand"/>
                     </Grid>
                 </Frame>
 
-                <Label HorizontalOptions="Center" Margin="10,10,10,0"
-                    FontSize="Medium" FontAttributes="Bold" TextColor="Black" FontFamily="Arial Narrow">
+
+                <Label HorizontalOptions="CenterAndExpand" FontSize="24" FontAttributes="Bold" TextColor="WhiteSmoke">
                     <Label.Text>
                         <MultiBinding StringFormat="{}{0} - {1}">
                             <Binding Path="Viaje.Origen.Ciudad"/>
@@ -31,42 +29,42 @@
                         </MultiBinding>
                     </Label.Text>
                 </Label>
-                    <Label HorizontalTextAlignment="Center">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text="{Binding Viaje.FechaSalida, StringFormat='sale el {0:dd/MM/yyyy}'}" 
-                                      FontSize="16" 
-                                      FontAttributes="Bold" 
-                                      TextColor="#a75b60"/>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
 
-                <Label HorizontalTextAlignment="Center">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text="{Binding Viaje.FechaSalida, StringFormat='a las {0:HH:mm}'}" 
-                                      FontSize="14" 
-                                      FontAttributes="Bold" 
-                                      TextColor="#a75b60"/>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
+                <Frame Padding="0" CornerRadius="10" HasShadow="True" BackgroundColor="Black" BorderColor="Transparent">
+                    <StackLayout Spacing="4" HorizontalOptions="Center">
+                        <Label HorizontalOptions="Center" Margin="0,10,0,10">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="sale el " TextColor="White" />
+                                    <Span Text="{Binding Viaje.FechaSalida, StringFormat='{0:dd/MM/yyyy}'}" TextColor="#ff6666" FontAttributes="Bold" FontSize="16"/>
+                                    <Span Text=" a las " TextColor="White" />
+                                    <Span Text="{Binding Viaje.FechaSalida, StringFormat='{0:HH:mm}'}" TextColor="#ff6666" FontAttributes="Bold" FontSize="16"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </StackLayout>
+                </Frame>
 
-                    <Frame Padding="0" Margin="10,0,10,0" CornerRadius="15" HasShadow="True" BackgroundColor="#99FFE09E" BorderColor="Transparent">
-                    <StackLayout Spacing="4" HorizontalOptions="Start" >
-                        <Label 
-                        Text="{Binding Viaje.CantButacas, StringFormat='Quedan {0} lugares!'}"                                                 
-                        FontSize="12" 
-                        TextColor="Black" 
-                        Margin="30,10,0,0"/>
-
-                        <Label 
-                        Text="{Binding Viaje.UsuarioCreador.UsuarioNombre, StringFormat='Creado por {0}'}"                                                 
-                        FontSize="12" 
-                        TextColor="Black" 
-                        Margin="30,0,0,10" />
-
+                <Frame Padding="0"  CornerRadius="15" HasShadow="True" BackgroundColor="#99FFE09E" BorderColor="Transparent">
+                    <StackLayout Spacing="5" HorizontalOptions="Center" >
+                        <Label Text="{Binding Viaje.CantButacas, StringFormat='Quedan {0} lugares!'}"                                                 
+                               FontSize="12" 
+                               TextColor="Black" 
+                               HorizontalOptions="Center" Margin="0,10,0,0"/>
+                        <Label Text="{Binding Viaje.UsuarioCreador.UsuarioNombre, StringFormat='Creado por {0}'}"                                                 
+                               FontSize="12" 
+                               TextColor="Black" 
+                               HorizontalOptions="Center"/>
+                        <Label HorizontalOptions="Center" Margin="0,0,0,10" >
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Llega el " TextColor="Black"/>
+                                    <Span Text="{Binding Viaje.FechaArribo, StringFormat='{0:dd/MM/yyyy}'}"/>
+                                    <Span Text=" a las " TextColor="Black"/>
+                                    <Span Text="{Binding Viaje.FechaArribo, StringFormat='{0:HH:mm}'}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
                     </StackLayout>
                 </Frame>
 
@@ -76,87 +74,104 @@
                 HorizontalOptions="Center"
                 Margin="10,10,10,0"></Label>
 
-                <Frame Padding="0" Margin="10,0,10,0" CornerRadius="15" HasShadow="True" BackgroundColor="#99FFE09E" BorderColor="Transparent">
-                    <StackLayout Spacing="4" HorizontalOptions="Start" >
-
+                <Frame Padding="0" CornerRadius="15" HasShadow="True" BackgroundColor="#99FFE09E" BorderColor="Transparent">
+                    <StackLayout Spacing="5" HorizontalOptions="Start" >
+                        <Image 
+                            Source="{Binding Viaje.UsuarioCreador.Vehiculo.RutaImagen}" 
+                            Aspect="Fill" 
+                            HorizontalOptions="Fill"
+                            VerticalOptions="Fill"/>
+                        <Label Text="{Binding Viaje.UsuarioCreador.Vehiculo.Marca, StringFormat='Vehiculo: {0}'}"                                                 
+                                FontSize="12" 
+                                TextColor="Black" 
+                                Margin="30,10,0,0"/>
                         <Label 
-                        Text="{Binding Viaje.UsuarioCreador.Vehiculo.Marca, StringFormat='Vehiculo: {0}'}"                                                 
-                        FontSize="12" 
-                        TextColor="Black" 
-                        Margin="30,10,0,0"/>
+                            Text="{Binding Viaje.UsuarioCreador.Vehiculo.Modelo, StringFormat='Modelo: {0}'}"                                                 
+                            FontSize="12" 
+                            TextColor="Black" 
+                            Margin="30,0,0,0" />
                         <Label 
-                        Text="{Binding Viaje.UsuarioCreador.Vehiculo.Modelo, StringFormat='Modelo: {0}!'}"                                                 
-                        FontSize="12" 
-                        TextColor="Black" 
-                        Margin="30,0,0,0" />
+                            Text="{Binding Viaje.UsuarioCreador.Vehiculo.TipoVehiculo, StringFormat='Tipo: {0}'}"                                                 
+                            FontSize="12" 
+                            TextColor="Black" 
+                            Margin="30,0,0,0" />
                         <Label 
-                        Text="{Binding Viaje.UsuarioCreador.Vehiculo.CantPlazas, StringFormat='Lugares en Vehiculo: {0}!'}"                                                 
-                        FontSize="12" 
-                        TextColor="Black" 
-                        Margin="30,0,0,0" />
+                            Text="{Binding Viaje.UsuarioCreador.Vehiculo.CantPlazas, StringFormat='Lugares en Vehiculo: {0}'}"                                                 
+                            FontSize="12" 
+                            TextColor="Black" 
+                            Margin="30,0,0,0" />
                         <Label 
-                        Text="{Binding Viaje.UsuarioCreador.Vehiculo.EspacioGuardado, StringFormat='Espacio de guardado: {0}!'}"                                                 
-                        FontSize="12" 
-                        TextColor="Black" 
-                        Margin="30,0,0,0" />
+                            Text="{Binding Viaje.UsuarioCreador.Vehiculo.EspacioGuardado, StringFormat='Espacio de guardado: {0}!'}"                                                 
+                            FontSize="12" 
+                            TextColor="Black" 
+                            Margin="30,0,0,0" />
                         <Label 
-                        Text="{Binding Viaje.UsuarioCreador.Vehiculo.AptoDiscapacitados, StringFormat='Espacio de guardado: {0}!'}"                                                 
-                        FontSize="12" 
-                        TextColor="Black" 
-                        Margin="30,0,0,0" />
+                            Text="{Binding Viaje.UsuarioCreador.Vehiculo.AptoDiscapacitados, StringFormat='Apto discapacitados: {0}!'}"                                                 
+                            FontSize="12" 
+                            TextColor="Black" 
+                            Margin="30,0,0,0" />
                         <Label 
-                        Text="{Binding Viaje.UsuarioCreador.Vehiculo.Patente, StringFormat='Espacio de guardado: {0}!'}"                                                 
-                        FontSize="12" 
-                        TextColor="Black" 
-                        Margin="30,0,0,10" />
-
+                            Text="{Binding Viaje.UsuarioCreador.Vehiculo.Patente, StringFormat='Patente: {0}'}"                                                 
+                            FontSize="12" 
+                            TextColor="Black" 
+                            Margin="30,0,0,10" />
                     </StackLayout>
                 </Frame>
 
-                <Frame Padding="0" Margin="10,0,10,0" CornerRadius="15" HasShadow="True" BackgroundColor="#99FFE09E" BorderColor="Transparent">
-                    <StackLayout Spacing="4" HorizontalOptions="Start" >
+                <Label Text="Conductor" FontSize="14" 
+                       TextColor="Black" 
+                       HorizontalOptions="Center"
+                       Margin="10,10,10,0">
+                </Label>
 
-                        <Label 
-         Text="{Binding Viaje.UsuarioCreador.Vehiculo.Marca, StringFormat='Vehiculo: {0}'}"                                                 
-         FontSize="12" 
-         TextColor="Black" 
-         Margin="30,10,0,0"/>
-                        <Label 
-         Text="{Binding Viaje.UsuarioCreador.Vehiculo.Modelo, StringFormat='Modelo: {0}!'}"                                                 
-         FontSize="12" 
-         TextColor="Black" 
-         Margin="30,0,0,0" />
-                        <Label 
-         Text="{Binding Viaje.UsuarioCreador.Vehiculo.CantPlazas, StringFormat='Lugares en Vehiculo: {0}!'}"                                                 
-         FontSize="12" 
-         TextColor="Black" 
-         Margin="30,0,0,0" />
-                        <Label 
-         Text="{Binding Viaje.UsuarioCreador.Vehiculo.EspacioGuardado, StringFormat='Espacio de guardado: {0}!'}"                                                 
-         FontSize="12" 
-         TextColor="Black" 
-         Margin="30,0,0,0" />
-                        <Label 
-         Text="{Binding Viaje.UsuarioCreador.Vehiculo.AptoDiscapacitados, StringFormat='Espacio de guardado: {0}!'}"                                                 
-         FontSize="12" 
-         TextColor="Black" 
-         Margin="30,0,0,0" />
-                        <Label 
-         Text="{Binding Viaje.UsuarioCreador.Vehiculo.Patente, StringFormat='Espacio de guardado: {0}!'}"                                                 
-         FontSize="12" 
-         TextColor="Black" 
-         Margin="30,0,0,0" />
+                <Frame Padding="0"  CornerRadius="15" HasShadow="True" BackgroundColor="#99FFE09E" BorderColor="Transparent" >
+                    <StackLayout Spacing="5"  HorizontalOptions="Start">
 
+                        <Image 
+                            Source="{Binding Viaje.UsuarioCreador.RutaImagen}" 
+                            Aspect="Fill" 
+                            HorizontalOptions="Fill"
+                            VerticalOptions="Fill"/>
+                        <Label 
+                             Text="{Binding Viaje.UsuarioCreador.Nombre, StringFormat='Nombre: {0}'}"                                                 
+                             FontSize="12" 
+                             TextColor="Black" 
+                             Margin="30,10,0,0"
+                            HorizontalOptions="Start"/>
+                        <Label 
+                             Text="{Binding Viaje.UsuarioCreador.Apellido, StringFormat='Apellido: {0}'}"                                                 
+                             FontSize="12" 
+                             TextColor="Black"
+                            Margin="30,0,0,0"
+                             HorizontalOptions="Start"/>
+                        <Label 
+                             Text="{Binding Viaje.UsuarioCreador.Edad, StringFormat='Edad: {0}'}"                                                 
+                             FontSize="12" 
+                             TextColor="Black" 
+                                                        Margin="30,0,0,0"
+                             HorizontalOptions="Start"/>
+                        <Label 
+                             Text="{Binding Viaje.UsuarioCreador.Celular, StringFormat='Celular: {0}'}"                                                 
+                             FontSize="12" 
+                             TextColor="Black" 
+                                                        Margin="30,0,0,0"
+                             HorizontalOptions="Start"/>
+                        <Label 
+                             Text="{Binding Viaje.UsuarioCreador.ActivoDesde, StringFormat='Activo desde el {0:dd/MM/yyyy}'}"                                                 
+                             FontSize="12" 
+                             TextColor="Black" 
+                             Margin="30,0,0,10" 
+                             HorizontalOptions="Start"/>
                     </StackLayout>
                 </Frame>
                 
                 <Label 
-                Text="Calificación" 
-                FontSize="14" 
-                FontAttributes="Bold" 
-                TextColor="#a75b60"
-                HorizontalOptions="Center"
-                Margin="0, 0, 0, -10"/>
+                    Text="Calificación" 
+                    FontSize="14" 
+                    FontAttributes="Bold" 
+                    TextColor="Black"
+                    HorizontalOptions="Center"
+                       Margin="0,10,0,-15"/>
 
                 <HorizontalStackLayout HorizontalOptions="Center" Spacing="4">
                     <Label Text="★" FontSize="24" TextColor="#e9ad41" />

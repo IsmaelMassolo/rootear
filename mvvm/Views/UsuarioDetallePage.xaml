@@ -101,7 +101,7 @@
                         Text="{Binding Usuario.Lugar.Provincia, StringFormat='Provincia: {0}'}"                                                 
                         FontSize="12" 
                         TextColor="Black" 
-                        Margin="30,0,0,20" />
+                        Margin="30,0,0,10" />
 
                 </StackLayout>
             </Frame>
@@ -114,24 +114,23 @@
             
             <Frame Padding="0" Margin="10,0,10,0" CornerRadius="15" HasShadow="True" BackgroundColor="#99FFE09E" BorderColor="Transparent">
                 <StackLayout Spacing="4" HorizontalOptions="Start" >
-
-                    <Label 
-                        Text="{Binding Usuario.Vehiculo.Marca, StringFormat='Vehiculo: {0}'}"                                                 
+                        <Image 
+                            Source="{Binding Usuario.Vehiculo.RutaImagen}" 
+                            Aspect="AspectFill" 
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand"/>
+                        <Label 
+                        Text="{Binding Usuario.Vehiculo.Marca, StringFormat='Marca: {0}'}"                                                 
                         FontSize="12" 
                         TextColor="Black" 
                         Margin="30,10,0,0"/>
                         <Label 
-                        Text="{Binding Usuario.Vehiculo.Modelo, StringFormat='Modelo: {0}!'}"                                                 
+                        Text="{Binding Usuario.Vehiculo.Modelo, StringFormat='Modelo: {0}'}"                                                 
                         FontSize="12" 
                         TextColor="Black" 
                         Margin="30,0,0,0" />
                         <Label 
-                        Text="{Binding Usuario.Vehiculo.CantPlazas, StringFormat='Lugares en Vehiculo: {0}!'}"                                                 
-                        FontSize="12" 
-                        TextColor="Black" 
-                        Margin="30,0,0,0" />
-                        <Label 
-                        Text="{Binding Usuario.Vehiculo.EspacioGuardado, StringFormat='Espacio de guardado: {0}!'}"                                                 
+                        Text="{Binding Usuario.Vehiculo.CantPlazas, StringFormat='Lugares en vehiculo: {0}'}"                                                 
                         FontSize="12" 
                         TextColor="Black" 
                         Margin="30,0,0,0" />
@@ -141,10 +140,15 @@
                         TextColor="Black" 
                         Margin="30,0,0,0" />
                         <Label 
-                        Text="{Binding Usuario.Vehiculo.Patente, StringFormat='Espacio de guardado: {0}!'}"                                                 
+                        Text="{Binding Usuario.Vehiculo.AptoDiscapacitados, StringFormat='Apto discapacitados: {0}!'}"                                                 
                         FontSize="12" 
                         TextColor="Black" 
                         Margin="30,0,0,0" />
+                        <Label 
+                        Text="{Binding Usuario.Vehiculo.Patente, StringFormat='Patente: {0}'}"                                                 
+                        FontSize="12" 
+                        TextColor="Black" 
+                        Margin="30,0,0,10" />
 
                     </StackLayout>
             </Frame>

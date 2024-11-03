@@ -7,9 +7,9 @@ namespace rootear.mvvm.Models
     public class DetalleReserva
     {
         [Key]
-        public int idDetalleReserva { get; set; }
+        public int IdDetalleReserva { get; set; }
 
-        public int IdReserva { get; set; }
+        public int IdSalaReserva { get; set; }
 
         public int IdViaje { get; set; }
 

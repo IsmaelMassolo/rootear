@@ -5,11 +5,8 @@ namespace rootear.Services;
 
 public interface IReservaService
 {
-    Task<Reserva> GetReservasPorId(int id);
 
-    Task<IEnumerable<DetalleReserva>> GetDetalleReservaPorId(int id);
+    Task<IEnumerable<Viaje>> GetDetalleReservaPorId();
     Task<bool> AgregarA_DetalleReserva(DetalleReservaDTO _nuevaReservaDTO);
-    //Task<bool> ModificarCarro(int idUsuario, Reserva reserva);
-    //Task<bool> EliminarViajeAsync(EliminarDetalleReservaDTO dto);
-
+    Task<bool> EliminarViajeAsync(DetalleReservaDTO dto);
 }
