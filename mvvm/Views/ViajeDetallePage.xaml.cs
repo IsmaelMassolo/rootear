@@ -8,11 +8,11 @@ public partial class ViajeDetallePage : ContentPage
 {
     public ViajeDetallePage(Viaje param)
     {
-        //InitializeComponent();
-        //ViajeService viaje = new ViajeService();
-        //CarritoService service = new CarritoService();
-        //ViajeDetalleViewModel vm = new ViajeDetalleViewModel(service, viaje);
-        //this.BindingContext = vm;
-        //vm.Viaje = param;
+        InitializeComponent();
+        ViajeService viaje = new ViajeService();
+        ReservaService service = new ReservaService();
+        ViajeDetalleViewModel vm = new ViajeDetalleViewModel(service, viaje);
+        this.BindingContext = vm;
+        vm.Viaje = param;
     }
 }

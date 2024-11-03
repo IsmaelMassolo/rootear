@@ -63,7 +63,7 @@ namespace rootear.mvvm.ViewModels
             {
                 return;
             }
-            //await Application.Current.MainPage.Navigation.PushAsync(new ViajeDetallePage(viajeSeleccionado), true);
+            await Application.Current.MainPage.Navigation.PushAsync(new ViajeDetallePage(viajeSeleccionado), true);
         }
 
         [RelayCommand]

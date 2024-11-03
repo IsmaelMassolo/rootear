@@ -1,14 +1,15 @@
-﻿//using rootear.mvvm.Models;
+﻿using rootear.mvvm.Models;
+using rootear.mvvm.Models.DTO;
 
-//namespace rootear.mvvm.Services;
+namespace rootear.Services;
 
-//public interface IReservaService
-//{
-//    Task<Carrito> GetCarritoPorId(int id);
-//    //Task<ViajeCarrito> GetViajeCarritoPorId(int id);
-//    Task<IEnumerable<ViajeCarrito>> GetViajeCarritoPorId(int id);
-//    Task<bool> AgregarAlCarrito(ViajeCarritoDTO _viaje);
-//    Task<bool> ModificarCarro(int idUsuario, Carrito carro);
-//    Task<bool> EliminarViajeAsync(EliminarViajeCarritoDTO dto);
+public interface IReservaService
+{
+    Task<Reserva> GetReservasPorId(int id);
 
-//}
+    Task<IEnumerable<DetalleReserva>> GetDetalleReservaPorId(int id);
+    Task<bool> AgregarA_DetalleReserva(DetalleReservaDTO _nuevaReservaDTO);
+    //Task<bool> ModificarCarro(int idUsuario, Reserva reserva);
+    //Task<bool> EliminarViajeAsync(EliminarDetalleReservaDTO dto);
+
+}

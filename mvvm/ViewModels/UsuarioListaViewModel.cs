@@ -11,13 +11,9 @@ namespace rootear.mvvm.ViewModels
     public partial class UsuarioListaViewModel : BaseViewModel
     {
         public ObservableCollection<Usuario> Usuarios { get; } = new();
-
         [ObservableProperty] private string esVisible = Transport.Rol;
-
         [ObservableProperty] bool isRefreshing;
-
         [ObservableProperty] Usuario usuarioSeleccionado;
-
         IUsuarioService _usuarioService;
 
         public UsuarioListaViewModel(IUsuarioService usuarioService)

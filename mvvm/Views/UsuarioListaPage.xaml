@@ -4,7 +4,7 @@
              xmlns:vm="clr-namespace:rootear.mvvm.ViewModels"
              xmlns:models="clr-namespace:rootear.mvvm.Models"
              xmlns:local="clr-namespace:rootear.Utils"
-               x:Class="rootear.mvvm.Views.UsuarioListaPage"
+             x:Class="rootear.mvvm.Views.UsuarioListaPage"
              x:DataType="vm:UsuarioListaViewModel"
              BackgroundColor="#3DD6AF">
 

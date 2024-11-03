@@ -16,7 +16,6 @@ namespace rootear.mvvm.Models
 
         public bool Estado { get; set; } = true;
 
-        // Relación uno a muchos con ViajePendiente
         public ICollection<DetalleReserva>? DetallesReservas { get; set; } // Una reserva puede tener muchos viajes pendientes
 
         [ForeignKey("IdUsuario")]
