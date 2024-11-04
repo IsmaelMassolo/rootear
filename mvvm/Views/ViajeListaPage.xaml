@@ -28,7 +28,7 @@
                             BackgroundColor="White"
                             TextColor="Black"
                             HorizontalOptions="FillAndExpand"
-                            FontSize="12"/>
+                            FontSize="11"/>
                         
                         <Button Text="Buscar"
                             Command="{Binding BuscarCommand}"
@@ -153,7 +153,7 @@
             TextColor="White"
             HorizontalOptions="End"
             VerticalOptions="End"
-            WidthRequest="60" 
+            WidthRequest="50" 
             HeightRequest="50" 
             CornerRadius="10"
             FontSize="30" 
@@ -165,7 +165,7 @@
          HorizontalOptions="Start"
          VerticalOptions="End"
          Margin="20,20,0,25" 
-         WidthRequest="60" 
+         WidthRequest="50" 
          HeightRequest="50" 
          CornerRadius="10"
          FontSize="20" 

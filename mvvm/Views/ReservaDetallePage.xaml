@@ -21,7 +21,7 @@
                 </Frame>
 
 
-                <Label HorizontalOptions="CenterAndExpand" FontSize="24" FontAttributes="Bold" TextColor="WhiteSmoke">
+                <Label HorizontalTextAlignment="Center" FontSize="24" FontAttributes="Bold" TextColor="WhiteSmoke">
                     <Label.Text>
                         <MultiBinding StringFormat="{}{0} - {1}">
                             <Binding Path="Viaje.Origen.Ciudad"/>
@@ -54,7 +54,9 @@
                         <Label Text="{Binding Viaje.UsuarioCreador.UsuarioNombre, StringFormat='{0} cuenta contigo para emprender el viaje!'}"                                                 
                                FontSize="12" 
                                TextColor="Black" 
-                               HorizontalOptions="Center"/>
+                               HorizontalOptions="Center"
+                               HorizontalTextAlignment="Center"
+                               Margin="10,0,10,0"/>
                         <Label HorizontalOptions="Center" Margin="0,0,0,10" >
                             <Label.FormattedText>
                                 <FormattedString>
@@ -189,7 +191,7 @@
          HorizontalOptions="Start"
          VerticalOptions="End"
          Margin="20,20,0,25" 
-         WidthRequest="60" 
+         WidthRequest="50" 
          HeightRequest="50" 
          CornerRadius="10"
          FontSize="20" 
@@ -203,7 +205,7 @@
         TextColor="White"
         HorizontalOptions="End"
         VerticalOptions="End"
-        WidthRequest="230" 
+        WidthRequest="180" 
         HeightRequest="50"
         CornerRadius="10"
         FontSize="14" 

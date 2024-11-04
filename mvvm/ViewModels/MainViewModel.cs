@@ -18,6 +18,12 @@ namespace rootear.mvvm.ViewModels
         }
 
         [RelayCommand]
+        public async Task GoToMisViajes()
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(new HistorialPage());
+        }
+
+        [RelayCommand]
         public async Task GoToMisReservas()
         {
             await Application.Current.MainPage.Navigation.PushAsync(new ReservaPage());

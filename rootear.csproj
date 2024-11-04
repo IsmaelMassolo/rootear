@@ -61,6 +61,8 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Fonts\materialdesignicons-webfont.ttf" />
+	  <None Remove="Resources\Images\andres.png" />
+	  <None Remove="Resources\Images\logo.png" />
 	  <None Remove="Resources\Images\ruta.png" />
 	  <None Remove="Resources\Images\user.png" />
 	</ItemGroup>
@@ -79,6 +81,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="mvvm\Views\HistorialPage.xaml.cs">
+	    <DependentUpon>HistorialPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="mvvm\Views\ViajeAgregarPage.xaml.cs">
 	    <DependentUpon>ViajeAgregarPage.xaml</DependentUpon>
 	  </Compile>
@@ -110,6 +115,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="mvvm\Views\MainPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="mvvm\Views\HistorialPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="mvvm\Views\ViajeAgregarPage.xaml">

@@ -21,8 +21,8 @@ public static class Constants
     public const string AgregarEnReservaEndpoint = "http://localhost:5161/api/DetalleReserva/Agregar";
     public const string EliminarDetalleReservaEndpoint = "http://localhost:5161/api/DetalleReserva/Eliminar";
     public const string DetalleReservaEndpoint = "http://localhost:5161/api/DetalleReserva/Reserva";
-
-    public const string DetalleReservaAgregarEndpoint = "http://localhost:5161/api/DetalleReserva/Agregar";
+    //HISTORIAL
+    public const string ObtenerHistorialEndpoint = "http://localhost:5161/api/ViajeUsuario/Obtener";
 
 
     public static string AppName = "rootear";

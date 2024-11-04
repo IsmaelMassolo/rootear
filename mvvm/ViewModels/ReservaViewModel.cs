@@ -10,17 +10,15 @@ namespace rootear.mvvm.ViewModels;
 
 public partial class ReservaViewModel : BaseViewModel
 {
-    [ObservableProperty] Reserva reserva;
-    [ObservableProperty] private DetalleReserva _viajesEnReserva;
-    [ObservableProperty]
-    private ObservableCollection<Viaje> viajesFiltrados = new();
+    //[ObservableProperty] Reserva reserva;
+    //[ObservableProperty] private DetalleReserva _viajesEnReserva;
+    [ObservableProperty] private ObservableCollection<Viaje> viajesFiltrados = new();
     [ObservableProperty] bool isRefreshing;
     [ObservableProperty] Viaje viajeSeleccionado;
     IReservaService _reservaService;
 
     public ReservaViewModel(IReservaService reservaService)
     {
-        Title = "Tu Reserva";
         _reservaService = reservaService;
     }
 

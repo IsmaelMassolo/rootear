@@ -4,7 +4,6 @@
              x:Class="rootear.mvvm.Views.LoginPage"
              xmlns:viewModels="clr-namespace:rootear.mvvm.ViewModels"
              x:DataType="viewModels:LoginViewModel" 
-             Title="{Binding Title}"
              BackgroundColor="#695b97">
 
 
@@ -18,11 +17,11 @@
                HorizontalOptions="Center"
                BorderColor="#7fbbcb">
 
-            <Image Source="logo.jpg" WidthRequest="100" HeightRequest="100" HorizontalOptions="Center" Scale="2" />
+            <Image Source="logo.png" WidthRequest="80" HeightRequest="80" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Scale="3" />
         </Frame>
 
 
-        <Label Text="rOOtear" 
+        <Label Text="rootear" 
                FontSize="39" 
                FontAttributes="Bold" 
                HorizontalOptions="Center" 

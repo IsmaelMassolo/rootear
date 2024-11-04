@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="rootear.mvvm.Views.HistorialPage"
+             xmlns:vm="clr-namespace:rootear.mvvm.ViewModels"
+             xmlns:models="clr-namespace:rootear.mvvm.Models"
+             xmlns:local="clr-namespace:rootear.Utils"
+             x:DataType="vm:HistorialViewModel"
+             BackgroundColor="#5E5E5E">
+
+    <Grid Padding="5">
+        <RefreshView Command="{Binding GetViajesDelUsuarioCommand}" IsRefreshing="{Binding IsRefreshing}">
+            
+            <ScrollView>
+                <StackLayout Margin="10,0,10,0">
+                    <Label 
+                    Margin="0,5,0,10"
+                    Text="Mi historial de viajes" 
+                    FontSize="20" 
+                    HorizontalOptions="Center" 
+                    TextColor="White" />
+
+                    <CollectionView
+                        Grid.Row="1"
+                        ItemsSource="{Binding ViajesFiltrados}"
+                        SelectionMode="Single"
+                        SelectedItem="{Binding ViajeSeleccionado}">
+                        
+                    <CollectionView.EmptyView>
+                        <StackLayout Padding="10">
+                                    <Image Source="user.png"
+                                           HorizontalOptions="CenterAndExpand" 
+                                           VerticalOptions="CenterAndExpand"
+                                           HeightRequest="80"/>
+                                <Label Text="No tienes historia rootera..."
+                                       FontSize="12"
+                                       TextColor="Black"
+                                       HorizontalOptions="Center" />
+                            </StackLayout>
+                    </CollectionView.EmptyView>
+                    
+                        
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Viaje">
+                            <Frame
+                                Margin="15,15,15,15"
+                                Padding="6"
+                                CornerRadius="10"
+                                HasShadow="False"
+                                BorderColor="Transparent"
+                                BackgroundColor="LightYellow">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                        <StackLayout
+                                            Grid.Column="1"
+                                            Padding="10,5,10,0">
+                                            <Label FontSize="Default"
+                                                   HorizontalTextAlignment="Center"
+                                                   TextColor="#2f4574"
+                                                   Padding="0,0,0,0"
+                                                   FontAttributes="Bold" 
+                                                   HorizontalOptions="Center">
+                                                <Label.Text>
+                                                    <MultiBinding StringFormat="{}Rooteaste desde {0} hasta {1}">
+                                                        <Binding Path="Origen.Ciudad"/>
+                                                        <Binding Path="Destino.Ciudad"/>
+                                                    </MultiBinding>
+                                                </Label.Text>
+                                            </Label>
+
+                                            <Label HorizontalTextAlignment="Center">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{Binding FechaSalida, StringFormat='el {0:dd/MM/yyyy}'}" 
+                                                              FontSize="Default" 
+                                                              FontAttributes="Bold" 
+                                                              TextColor="#a75b60"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+
+                                            <Label 
+                                                Text="{Binding UsuarioCreador.Vehiculo.CantPlazas, StringFormat=' y asistieron {0} rooteros!'}"                                                 
+                                                FontSize="13" 
+                                                TextColor="#5E5E5E" 
+                                                Margin="0,0,0,0"
+                                                FontAttributes="Bold"
+                                                HorizontalTextAlignment="Center"
+                                                HorizontalOptions="Center"/>
+
+                                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                                <Label 
+                                                    WidthRequest="120"
+                                                    FontSize="Caption"
+                                                    TextColor="Black"
+                                                    Padding="0,0,20,0"
+                                                    Margin="0,40,0,0"
+                                                    HorizontalTextAlignment="End">
+                                                    <Label.Text>
+                                                        <MultiBinding StringFormat="{}Te llevó {0} {1} ({2})">
+                                                            <Binding Path="UsuarioCreador.Nombre"/>
+                                                            <Binding Path="UsuarioCreador.Apellido"/>
+                                                            <Binding Path="UsuarioCreador.UsuarioNombre"/>
+                                                        </MultiBinding>
+                                                    </Label.Text>
+                                                </Label>
+
+                                                <Image 
+                                                    Source="{Binding UsuarioCreador.RutaImagen}" 
+                                                    HeightRequest="130"
+                                                    Aspect="AspectFit" 
+                                                    VerticalOptions="Fill"
+                                                    Margin="0,10,0,0">
+                                                    <Image.Clip>
+                                                        <EllipseGeometry Center="60,60" RadiusX="60" RadiusY="60"/>
+                                                    </Image.Clip>
+                                                </Image>
+                                            </StackLayout>
+
+                                            <StackLayout Orientation="Horizontal" Spacing="10">
+                                                <Image 
+                                                     Source="{Binding UsuarioCreador.Vehiculo.RutaImagen}" 
+                                                     HeightRequest="120"
+                                                     Aspect="AspectFit" 
+                                                     VerticalOptions="Fill"
+                                                     Margin="0,0,0,10">
+                                                    <Image.Clip>
+                                                        <EllipseGeometry Center="60,60" RadiusX="60" RadiusY="60"/>
+                                                    </Image.Clip>
+                                                </Image>
+                                                <Label 
+                                                         WidthRequest="120"
+                                                         FontSize="Caption"
+                                                         TextColor="Black"
+                                                         Padding="0,0,0,0"
+                                                         Margin="-5,30,0,0"
+                                                         HorizontalTextAlignment="Start">
+                                                    <Label.Text>
+                                                        <MultiBinding StringFormat="{}en su {0} {1} ({2})">
+                                                            <Binding Path="UsuarioCreador.Vehiculo.TipoVehiculo"/>
+                                                            <Binding Path="UsuarioCreador.Vehiculo.Marca"/>
+                                                            <Binding Path="UsuarioCreador.Vehiculo.Patente"/>
+                                                        </MultiBinding>
+                                                    </Label.Text>
+                                                </Label>
+
+
+                                            </StackLayout>
+
+                                            <Label 
+                                                Text="{Binding FechaArribo, StringFormat='Llegaste el {0}'}"                                                 
+                                                FontSize="13"
+                                                FontAttributes="Bold"
+                                                TextColor="#5E5E5E" 
+                                                Margin="0,5,0,0"
+                                                HorizontalTextAlignment="Center"/>
+                                        </StackLayout>
+
+                                    </Grid>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </ScrollView>
+        </RefreshView>
+
+       
+        <Button Text="X" 
+         Command="{Binding GoToMainPageCommand}" 
+         BackgroundColor="#ff6666" TextColor="White"
+         HorizontalOptions="Start"
+         VerticalOptions="End"
+         Margin="20,20,0,25" 
+         WidthRequest="50" 
+         HeightRequest="50" 
+         CornerRadius="10"
+         FontSize="20" 
+         FontAttributes="Bold"/>
+    </Grid>
+</ContentPage>

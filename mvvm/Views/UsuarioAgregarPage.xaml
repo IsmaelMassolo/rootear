@@ -16,15 +16,15 @@
     
     <Grid Padding="5">
     <ScrollView>
-        <VerticalStackLayout Margin="40,0,40,0">
+        <VerticalStackLayout Margin="10,0,10,0">
             <Grid ColumnDefinitions="1*" RowDefinitions="*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*" RowSpacing="5">
 
-                <Label 
-                    Margin="0,25,0,10"
+                    <Label 
+                    Margin="0,5,0,10"
                     Text="Quiero rootear" 
                     FontSize="20" 
                     HorizontalOptions="Center" 
-                    TextColor="#FFC172" />
+                    TextColor="White" />
 
                 <Label Text="Nombre"   Grid.Row="1" HorizontalOptions="Center" FontSize="12" Margin="0,10,0,0" TextColor="White"/>
                 <Entry   Grid.Row="2" VerticalOptions="End" Text="{Binding Nombre}" Background="AntiqueWhite" TextColor="Black"/>
@@ -97,8 +97,6 @@
                          Margin="5,5,5,80"
                          HeightRequest="120"
                          HorizontalOptions="Center"/>
-
-
             </Grid>
         </VerticalStackLayout>
     </ScrollView>
@@ -108,7 +106,7 @@
          HorizontalOptions="Start"
          VerticalOptions="End"
          Margin="20,20,0,25" 
-         WidthRequest="60" 
+         WidthRequest="50" 
          HeightRequest="50" 
          CornerRadius="10"
          FontSize="20" 
@@ -122,7 +120,7 @@
             TextColor="White"
             HorizontalOptions="End"
             VerticalOptions="End"
-            WidthRequest="230" 
+            WidthRequest="180" 
             HeightRequest="50"
             CornerRadius="10"
             FontSize="14" 
