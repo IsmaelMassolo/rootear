@@ -10,12 +10,21 @@
 
 
     <Grid Padding="5">
+        
         <RefreshView Command="{Binding GetUsuariosCommand}" IsRefreshing="{Binding IsRefreshing}">
         
             <ScrollView>
-            <StackLayout Padding="10,20,10,0">
+                
+            <StackLayout Padding="10,0,10,0">
 
-                <CollectionView ItemsSource="{Binding Usuarios}"
+                    <Label 
+                    Margin="0,5,0,10"
+                    Text="Usuarios rooteros" 
+                    FontSize="20" 
+                    HorizontalOptions="Center" 
+                    TextColor="White" />
+                
+                    <CollectionView ItemsSource="{Binding Usuarios}"
                                 SelectionMode="Single"
                                 SelectedItem="{Binding UsuarioSeleccionado}"
                                 SelectionChangedCommand="{Binding GoToDetailCommand}">

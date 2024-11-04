@@ -73,6 +73,7 @@ public partial class ViajeAgregarViewModel : BaseViewModel
         LugaresFiltrados = new ObservableCollection<Lugar>(lugares);
         FiltrarLugares();
     }
+
     private void FiltrarLugares()
     {
         if (string.IsNullOrWhiteSpace(LugarBusqueda))

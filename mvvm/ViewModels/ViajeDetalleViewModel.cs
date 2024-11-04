@@ -36,7 +36,8 @@ namespace rootear.mvvm.ViewModels
             {
                 IdSalaReserva = Transport.IdSalaReserva,
                 IdViaje = viaje.IdViaje,
-                FechaAgregado = DateTime.Now
+                FechaAgregado = DateTime.Now,
+                IdUsuario = Transport.IdUsuario
             };
 
             var resultado = await _reservaService.AgregarA_DetalleReserva(nuevaReservaDTO);
@@ -59,33 +60,5 @@ namespace rootear.mvvm.ViewModels
             await Application.Current.MainPage.Navigation.PopAsync();
         }
 
-        //[RelayCommand]
-        //private async Task EliminarViajeAsync()
-        //{
-
-        //    bool confirm = await Application.Current.MainPage.DisplayAlert("Confirmar", "¿Estás seguro de que deseas eliminar este viaje?", "Sí", "No");
-
-        //    if (confirm)
-        //    {
-        //        try
-        //        {
-        //            bool result = await _viajeService.EliminarViajeAsync(viaje.IdViaje);
-
-        //            if (result)
-        //            {
-        //                await Application.Current.MainPage.DisplayAlert("Éxito", "Viaje eliminado correctamente, la próxima será", "OK");
-        //                await GoBack();
-        //            }
-        //            else
-        //            {
-        //                await Application.Current.MainPage.DisplayAlert("Error", "No se pudo eliminar el viaje.", "OK");
-        //            }
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            await Application.Current.MainPage.DisplayAlert("Error", $"Ocurrió un error: {ex.Message}", "OK");
-        //        }
-        //    }
-        //}
     }
 }

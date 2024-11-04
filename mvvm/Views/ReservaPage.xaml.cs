@@ -1,4 +1,3 @@
-//using Android.Service.Carrier;
 using rootear.Services;
 using rootear.mvvm.ViewModels;
 

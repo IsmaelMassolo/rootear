@@ -2,10 +2,8 @@
 using CommunityToolkit.Mvvm.Input;
 using rootear.mvvm.Models;
 using rootear.mvvm.Models.DTO;
-using rootear.mvvm.Views;
 using rootear.Services;
 using rootear.Utils;
-using System.Collections.ObjectModel;
 
 namespace rootear.mvvm.ViewModels
 {
@@ -14,25 +12,14 @@ namespace rootear.mvvm.ViewModels
 
         [ObservableProperty] Viaje viaje;
         [ObservableProperty] DetalleReserva detalleReserva;
-
-
-
-
-
         IReservaService _reservaService;
         IViajeService _viajeService;
-
-        //[ObservableProperty] DetalleReserva _detalleReserva;
-
-
-
 
         public ReservaDetalleViewModel(IReservaService reservaService, IViajeService viajeService)
         {
             Title = "Detalles";
             _reservaService = reservaService;
             _viajeService = viajeService;
-   
         }
 
 
@@ -57,7 +44,8 @@ namespace rootear.mvvm.ViewModels
                 {
                     IdSalaReserva = Transport.IdSalaReserva,
                     IdViaje = viaje.IdViaje,
-                    FechaAgregado = DateTime.Now
+                    FechaAgregado = DateTime.Now,
+                    IdUsuario = Transport.IdUsuario
                 };
 
                 // Llamar al servicio para eliminar el viaje

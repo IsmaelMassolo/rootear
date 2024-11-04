@@ -8,18 +8,18 @@
              x:DataType="vm:ReservaViewModel"
              BackgroundColor="#695b97">
 
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <local:IntToVisibilityConverter x:Key="IntToVisibilityConverter" />
-        </ResourceDictionary>
-    </ContentPage.Resources>
-
     <Grid Padding="5">
         <RefreshView Command="{Binding GetViajesDelUsuarioCommand}" IsRefreshing="{Binding IsRefreshing}">
             
             <ScrollView>
-                <StackLayout Padding="10,10,10,0">
-                    
+                <StackLayout Padding="10,0,10,0">
+                    <Label 
+                    Margin="0,5,0,10"
+                    Text="Mis reservas" 
+                    FontSize="20" 
+                    HorizontalOptions="Center" 
+                    TextColor="White" />
+
                     <CollectionView
                         Grid.Row="1"
                         ItemsSource="{Binding ViajesFiltrados}"
@@ -28,11 +28,19 @@
                         SelectionChangedCommand="{Binding GoToDetailCommand}">
                         
                     <CollectionView.EmptyView>
-                        <StackLayout Padding="100">
-                            <Image Source="sin_senial.png" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
-                        </StackLayout>
+                        <StackLayout Padding="10">
+                                    <Image Source="user.png"
+                                           HorizontalOptions="CenterAndExpand" 
+                                           VerticalOptions="CenterAndExpand"
+                                           HeightRequest="80"/>
+                                <Label Text="No hay viajes en reserva, seguí rooteando!"
+                                       FontSize="12"
+                                       TextColor="Black"
+                                       HorizontalOptions="Center" />
+                            </StackLayout>
                     </CollectionView.EmptyView>
                     
+                        
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="models:Viaje">
                             <Frame
@@ -127,8 +135,8 @@
             </ScrollView>
         </RefreshView>
 
-        <!--<Button 
-            Command="{Binding NuevoViajeCommand }"
+        <Button 
+            Command="{Binding GoToViajeListaCommand}"
             Text="+" 
             Margin="0,20,20,25" 
             BackgroundColor="#1CBBD4" 
@@ -139,7 +147,7 @@
             HeightRequest="50" 
             CornerRadius="10"
             FontSize="30" 
-            FontAttributes="Bold"/>-->
+            FontAttributes="Bold"/>
         
         <Button Text="X" 
          Command="{Binding GoToMainPageCommand}" 

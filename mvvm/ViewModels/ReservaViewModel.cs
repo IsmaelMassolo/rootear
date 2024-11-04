@@ -10,28 +10,19 @@ namespace rootear.mvvm.ViewModels;
 
 public partial class ReservaViewModel : BaseViewModel
 {
-
-
-
     [ObservableProperty] Reserva reserva;
-    public ObservableCollection<DetalleReserva> Viajes { get; } = new();
     [ObservableProperty] private DetalleReserva _viajesEnReserva;
     [ObservableProperty]
     private ObservableCollection<Viaje> viajesFiltrados = new();
-
     [ObservableProperty] bool isRefreshing;
     [ObservableProperty] Viaje viajeSeleccionado;
     IReservaService _reservaService;
-
 
     public ReservaViewModel(IReservaService reservaService)
     {
         Title = "Tu Reserva";
         _reservaService = reservaService;
     }
-
-
-
 
     [RelayCommand]
     private async Task GetViajesDelUsuario()
@@ -50,19 +41,11 @@ public partial class ReservaViewModel : BaseViewModel
 
                 }
             }
-
         }
         catch (Exception exception)
         {
             throw new Exception(exception.Message);
         }
-    }
-
-    [RelayCommand]
-    private async Task GoBack()
-    {
-        await Application.Current.MainPage.Navigation.PopAsync();
-
     }
 
     [RelayCommand]
@@ -81,4 +64,11 @@ public partial class ReservaViewModel : BaseViewModel
         // Navegar a MainPage
         await Application.Current.MainPage.Navigation.PushAsync(new MainPage());
     }
+
+    [RelayCommand]
+    public async Task GoToViajeLista()
+    {
+        await Application.Current.MainPage.Navigation.PushAsync(new ViajeListaPage());
+    }
+
 }
