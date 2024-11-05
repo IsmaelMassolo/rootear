@@ -64,7 +64,6 @@
                IsVisible="{Binding Message}" 
                HorizontalOptions="Center" />
 
-        <!-- Botón Agregar Usuario -->
         <Button Text="No tengo cuenta, quiero comenzar a rootear" 
            Command="{Binding NuevoUsuarioCommand}" 
            BackgroundColor="Black" 

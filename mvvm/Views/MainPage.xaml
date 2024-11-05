@@ -62,7 +62,7 @@
                     </Button.ImageSource>
                 </Button>
 
-                <Button BackgroundColor="#8BE27E" HeightRequest="70" ContentLayout="Top,5" Grid.Column="1" Grid.Row="4" Text="Mapas" FontSize="12">
+                <Button BackgroundColor="#8BE27E" HeightRequest="70" ContentLayout="Top,5" Grid.Column="1" Grid.Row="4" Text="Mapas" Command="{Binding GoToMapasCommand}" FontSize="12">
                     <Button.ImageSource>
                         <FontImageSource Size="30" FontFamily="MaterialDesignIcons" Glyph="󰍎" />
                     </Button.ImageSource>

@@ -93,7 +93,14 @@ namespace rootear.mvvm.ViewModels
         [RelayCommand]
         private async Task NuevoViaje()
         {
-            await Application.Current.MainPage.Navigation.PushAsync(new ViajeAgregarPage());
+            if (Transport.Rol == "Acompañante")
+            {
+                await Application.Current.MainPage.DisplayAlert("Ey!", "Tienes vehículo? Apuntate como conductor!", "OK");
+            }
+            else
+            {
+                await Application.Current.MainPage.Navigation.PushAsync(new ViajeAgregarPage());
+            }
         }
 
         [RelayCommand]
