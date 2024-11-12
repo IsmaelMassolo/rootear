@@ -1,6 +1,5 @@
-﻿using rootear.mvvm.ViewModels;
+﻿using CommunityToolkit.Mvvm.Input;
 using rootear.mvvm.Views;
-using CommunityToolkit.Mvvm.Input;
 using rootear.Utils;
 
 namespace rootear.mvvm.ViewModels
@@ -61,7 +60,6 @@ namespace rootear.mvvm.ViewModels
             await Application.Current.MainPage.DisplayAlert("Ups!", "Para ver mapas personalizados hazte rooter premium!", "OK");
         }
 
-
         [RelayCommand]
         public async Task GoToAcerca()
         {
@@ -75,7 +73,6 @@ namespace rootear.mvvm.ViewModels
 
             if (confirmExit)
             {
-
                 Application.Current.MainPage = new NavigationPage(new LoginPage());
             }
         }

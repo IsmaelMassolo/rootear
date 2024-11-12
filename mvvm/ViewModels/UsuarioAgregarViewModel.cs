@@ -23,7 +23,6 @@ public partial class UsuarioAgregarViewModel : BaseViewModel
     [ObservableProperty] private string genero;
     [ObservableProperty] private string rol;
     [ObservableProperty] private string rutaImagen;
-
     [ObservableProperty] private Lugar lugarSeleccionado;
     [ObservableProperty] private string lugarBusqueda;
     [ObservableProperty] private ObservableCollection<Lugar> lugaresFiltrados = new();
@@ -54,10 +53,7 @@ public partial class UsuarioAgregarViewModel : BaseViewModel
         string.IsNullOrWhiteSpace(Email) ||
         string.IsNullOrWhiteSpace(Contrasena) ||
         string.IsNullOrWhiteSpace(Celular) ||
-        fechaNac == default(DateTime) ||
         string.IsNullOrWhiteSpace(dni) ||
-        string.IsNullOrWhiteSpace(ciudad) ||
-        string.IsNullOrWhiteSpace(provincia) ||
         string.IsNullOrWhiteSpace(genero) ||
         string.IsNullOrWhiteSpace(rol))
 
@@ -81,7 +77,7 @@ public partial class UsuarioAgregarViewModel : BaseViewModel
             IdLugar = LugarSeleccionado?.IdLugar ?? 0,
             RutaImagen = rutaImagen/*"http://localhost:5161/Imagenes/Usuarios/" + this.usuarioNombre + ".png",*/
         };
-        
+
         try
         {
             await _usuarioService.AgregarUsuario(registro);
@@ -89,7 +85,7 @@ public partial class UsuarioAgregarViewModel : BaseViewModel
             {
                 await _usuarioService.SubirImagen(registro);
             }
-            await Application.Current.MainPage.DisplayAlert("Éxito", "Hola "+nombre+"! ahora puedes disfrutar de viajes compartidos rootear!", "Aceptar");
+            await Application.Current.MainPage.DisplayAlert("Éxito", "Hola " + nombre + "! ahora puedes disfrutar de viajes compartidos rootear!", "Aceptar");
         }
         catch (Exception)
         {

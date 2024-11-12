@@ -1,5 +1,4 @@
 using rootear.mvvm.ViewModels;
-using Microsoft.Maui.Controls;
 
 namespace rootear.mvvm.Views
 {

@@ -31,46 +31,21 @@
                 </Frame>
 
 
-                <Button BackgroundColor="#10BCE3" HeightRequest="90" ContentLayout="Top,5" Grid.Column="0" Grid.Row="2" Text="Mis reservas" Command="{Binding GoToMisReservasCommand}" FontSize="12">
-                    <Button.ImageSource>
-                        <FontImageSource Size="50" FontFamily="MaterialDesignIcons" Glyph="󱡹" />
-                    </Button.ImageSource>
-                </Button>
+                <Button BackgroundColor="#10BCE3" HeightRequest="90" ContentLayout="Top,5" Grid.Column="0" Grid.Row="2" Text="Mis reservas" Command="{Binding GoToMisReservasCommand}" FontSize="14" FontAttributes="Bold"/>
 
-                <Button BackgroundColor="#10BCE3" HeightRequest="90" ContentLayout="Top,5" Grid.Column="1" Grid.Row="2" Text="Mis Viajes" FontSize="12" Command="{Binding GoToMisViajesCommand}">
-                    <Button.ImageSource>
-                        <FontImageSource Size="50" FontFamily="MaterialDesignIcons" Glyph="󱬌" />
-                    </Button.ImageSource>
-                </Button>
+                <Button BackgroundColor="#10BCE3" HeightRequest="90" ContentLayout="Top,5" Grid.Column="1" Grid.Row="2" Text="Mis Viajes" FontSize="14" Command="{Binding GoToMisViajesCommand}" FontAttributes="Bold"/>
 
-                <Button BackgroundColor="#3DD6AF" HeightRequest="80" ContentLayout="Top,5" Grid.Column="0" Grid.Row="3" Text="Mi Perfil" Command="{Binding GoToPerfilUsuarioCommand}" FontSize="12">
-                    <Button.ImageSource>
-                        <FontImageSource Size="40" FontFamily="MaterialDesignIcons" Glyph="󰱕" />
-                    </Button.ImageSource>
-                </Button>
+                <Button BackgroundColor="#3DD6AF" HeightRequest="80" ContentLayout="Top,5" Grid.Column="0" Grid.Row="3" Text="Mi Perfil" Command="{Binding GoToPerfilUsuarioCommand}" FontSize="14" FontAttributes="Bold"/>
 
-                <Button BackgroundColor="#3DD6AF" HeightRequest="80" ContentLayout="Top,5" Grid.Column="1" Grid.Row="3" Text="Usuarios" FontSize="12" Command="{Binding GoToUsuarioListaCommand}">
-                    <Button.ImageSource>
-                        <FontImageSource Size="40" FontFamily="MaterialDesignIcons" Glyph="󰡉" />
-                    </Button.ImageSource>
-                </Button>
+                <Button BackgroundColor="#3DD6AF" HeightRequest="80" ContentLayout="Top,5" Grid.Column="1" Grid.Row="3" Text="Usuarios" FontSize="14" Command="{Binding GoToUsuarioListaCommand}" FontAttributes="Bold"/>
 
-                <Button BackgroundColor="#8BE27E" HeightRequest="70" ContentLayout="Top,5" Grid.Column="0" Grid.Row="4" Text="Planear Viaje" Command="{Binding GoToCrearViajeCommand}" FontSize="12">
-                    <Button.ImageSource>
-                        <FontImageSource Size="30" FontFamily="MaterialDesignIcons" Glyph="󰨫" />
+                <Button BackgroundColor="#8BE27E" HeightRequest="70" ContentLayout="Top,5" Grid.Column="0" Grid.Row="4" Text="Planear Viaje" Command="{Binding GoToCrearViajeCommand}" FontSize="14" FontAttributes="Bold"/>
 
-                    </Button.ImageSource>
-                </Button>
+                <Button BackgroundColor="#8BE27E" HeightRequest="70" ContentLayout="Top,5" Grid.Column="1" Grid.Row="4" Text="Mapas" Command="{Binding GoToMapasCommand}" FontSize="14" FontAttributes="Bold"/>
 
-                <Button BackgroundColor="#8BE27E" HeightRequest="70" ContentLayout="Top,5" Grid.Column="1" Grid.Row="4" Text="Mapas" Command="{Binding GoToMapasCommand}" FontSize="12">
-                    <Button.ImageSource>
-                        <FontImageSource Size="30" FontFamily="MaterialDesignIcons" Glyph="󰍎" />
-                    </Button.ImageSource>
-                </Button>
+                <Button BackgroundColor="#BAB9EB" HeightRequest="50" ContentLayout="Top,5" Grid.Column="0" Grid.Row="5" Text="Acerca de..." Command="{Binding GoToAcercaCommand}" FontSize="14" FontAttributes="Bold"/>
 
-                <Button BackgroundColor="#BAB9EB" HeightRequest="50" ContentLayout="Top,5" Grid.Column="0" Grid.Row="5" Text="Acerca de..." Command="{Binding GoToAcercaCommand}" FontSize="12"></Button>
-
-                <Button BackgroundColor="#BAB9EB" HeightRequest="50" ContentLayout="Top,5" Grid.Column="1" Grid.Row="5" Text="Salir" Command="{Binding ExitCommand}" FontSize="12"></Button>
+                <Button BackgroundColor="#BAB9EB" HeightRequest="50" ContentLayout="Top,5" Grid.Column="1" Grid.Row="5" Text="Salir" Command="{Binding ExitCommand}" FontSize="14" FontAttributes="Bold"/>
 
             </Grid>
         </VerticalStackLayout>

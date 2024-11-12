@@ -1,6 +1,6 @@
-﻿using rootear.mvvm.Models;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using rootear.mvvm.Models;
 using rootear.Services;
 using rootear.Utils;
 
@@ -19,7 +19,6 @@ namespace rootear.mvvm.ViewModels
             _usuarioService = usuarioService;
         }
 
-
         [RelayCommand]
         private async Task GoBack()
         {
@@ -29,7 +28,6 @@ namespace rootear.mvvm.ViewModels
         [RelayCommand]
         private async Task DeshabilitarUsuarioAsync()
         {
-
             bool confirm = await Application.Current.MainPage.DisplayAlert("Confirmar", "¿Estás seguro de que deseas deshabilitar este usuario?", "Sí", "No");
 
             if (confirm)
@@ -37,10 +35,9 @@ namespace rootear.mvvm.ViewModels
                 try
                 {
                     bool result = await _usuarioService.DeshabilitarUsuarioAsync(usuario);
-
                     if (result)
                     {
-                        await Application.Current.MainPage.DisplayAlert("Éxito", "Usuario Desctivado correctamente.", "OK");
+                        await Application.Current.MainPage.DisplayAlert("Éxito", "Usuario Desactivado correctamente.", "OK");
                         await GoBack();
                     }
                     else
@@ -54,6 +51,5 @@ namespace rootear.mvvm.ViewModels
                 }
             }
         }
-
     }
 }

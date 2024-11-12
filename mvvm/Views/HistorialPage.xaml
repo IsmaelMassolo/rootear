@@ -93,7 +93,7 @@
                                                 HorizontalTextAlignment="Center"
                                                 HorizontalOptions="Center"/>
 
-                                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                            <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Spacing="0">
                                                 <Label 
                                                     WidthRequest="120"
                                                     FontSize="Caption"
@@ -122,7 +122,7 @@
                                                 </Image>
                                             </StackLayout>
 
-                                            <StackLayout Orientation="Horizontal" Spacing="10">
+                                            <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Spacing="10">
                                                 <Image 
                                                      Source="{Binding UsuarioCreador.Vehiculo.RutaImagen}" 
                                                      HeightRequest="120"

@@ -1,10 +1,10 @@
-﻿using rootear.mvvm.Models;
-using rootear.Services;
-using rootear.mvvm.Views;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using System.Collections.ObjectModel;
+using rootear.mvvm.Models;
+using rootear.mvvm.Views;
+using rootear.Services;
 using rootear.Utils;
+using System.Collections.ObjectModel;
 
 namespace rootear.mvvm.ViewModels
 
@@ -58,10 +58,7 @@ namespace rootear.mvvm.ViewModels
         [RelayCommand]
         private async Task GoToDetail()
         {
-            if (viajeSeleccionado == null)
-            {
-                return;
-            }
+            if (viajeSeleccionado == null) { return; }
             await Application.Current.MainPage.Navigation.PushAsync(new ViajeDetallePage(viajeSeleccionado), true);
         }
 
@@ -86,7 +83,7 @@ namespace rootear.mvvm.ViewModels
                 v.Origen.Ciudad.Contains(SearchText, StringComparison.OrdinalIgnoreCase));
                 ViajesFiltrados.Clear();
                 foreach (var viaje in filtrado)
-                ViajesFiltrados.Add(viaje);
+                    ViajesFiltrados.Add(viaje);
             }
         }
 
@@ -106,7 +103,6 @@ namespace rootear.mvvm.ViewModels
         [RelayCommand]
         private async Task GoToMainPage()
         {
-            // Navegar a MainPage
             await Application.Current.MainPage.Navigation.PushAsync(new MainPage());
         }
     }

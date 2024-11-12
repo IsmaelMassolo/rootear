@@ -27,7 +27,7 @@ public class UsuarioService : IUsuarioService
         var response = await client.GetAsync(Constants.ObtenerUsuariosEndpoint);
 
         if (response.IsSuccessStatusCode)
-        return await response.Content.ReadFromJsonAsync<IEnumerable<Usuario>>(options);
+            return await response.Content.ReadFromJsonAsync<IEnumerable<Usuario>>(options);
         return default;
     }
 
@@ -68,7 +68,7 @@ public class UsuarioService : IUsuarioService
         {
             string extension = Path.GetExtension(registro.RutaImagen);
             string nuevoNombre = $"{registro.UsuarioNombre}{extension}";
-            string rutaTemporal = Path.Combine(Path.GetTempPath(), nuevoNombre); 
+            string rutaTemporal = Path.Combine(Path.GetTempPath(), nuevoNombre);
 
             File.Copy(registro.RutaImagen, rutaTemporal, true);
 

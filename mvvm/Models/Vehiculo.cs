@@ -1,5 +1,4 @@
-﻿using rootear.mvvm.Models;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace rootear.mvvm.Models
 {

@@ -1,8 +1,8 @@
-﻿using rootear.Utils;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using rootear.Services;
 using rootear.mvvm.Models;
-using CommunityToolkit.Mvvm.ComponentModel;
+using rootear.mvvm.Views;
+using rootear.Services;
 using System.Collections.ObjectModel;
 
 namespace rootear.mvvm.ViewModels;
@@ -38,7 +38,6 @@ public partial class UsuarioModificarViewModel : BaseViewModel
         await Application.Current.MainPage.DisplayAlert("Usuario", "Usuario modificado", "Aceptar");
     }
 
-
     public async Task CargarUsuarioAsync(int idUsuario)
     {
         try
@@ -51,12 +50,9 @@ public partial class UsuarioModificarViewModel : BaseViewModel
         }
     }
 
-
-
     [RelayCommand]
     private async Task GuardarCambiosAsync()
     {
-
         if (usuario == null)
         {
             await Application.Current.MainPage.DisplayAlert("Error", "No hay un usuario para guardar los cambios.", "OK");
@@ -65,15 +61,11 @@ public partial class UsuarioModificarViewModel : BaseViewModel
 
         try
         {
-            // Lógica para actualizar el usuario en el servicio
             bool result = await _usuarioService.ActualizarUsuarioAsync(usuario);
-
             if (result)
             {
-                await Application.Current.MainPage.DisplayAlert("Éxito", "Usuario actualizado correctamente.", "OK");
-
-                // Navegar de regreso a la página anterior
-                await Application.Current.MainPage.Navigation.PopAsync();
+                await Application.Current.MainPage.DisplayAlert("Éxito", "Usuario actualizado correctamente. Accede nuevamente con tus credenciales para seguir rooteando", "OK");
+                Application.Current.MainPage = new NavigationPage(new LoginPage());
             }
             else
             {
@@ -85,6 +77,4 @@ public partial class UsuarioModificarViewModel : BaseViewModel
             await Application.Current.MainPage.DisplayAlert("Error", $"Ocurrió un error: {ex.Message}", "OK");
         }
     }
-
-
 }

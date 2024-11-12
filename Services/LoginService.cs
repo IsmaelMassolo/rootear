@@ -1,8 +1,7 @@
-﻿using rootear.Services;
+﻿using rootear.mvvm.Models.DTO;
+using rootear.Utils;
 using System.Text;
 using System.Text.Json;
-using rootear.Utils;
-using rootear.mvvm.Models.DTO;
 
 namespace rootear.Services
 {

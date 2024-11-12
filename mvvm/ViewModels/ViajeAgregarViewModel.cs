@@ -9,7 +9,6 @@ using System.Collections.ObjectModel;
 namespace rootear.mvvm.ViewModels;
 public partial class ViajeAgregarViewModel : BaseViewModel
 {
-
     [ObservableProperty] private int idOrigen;
     [ObservableProperty] private int idDestino;
     [ObservableProperty] private DateTime fechaSalida = DateTime.Now;
@@ -32,7 +31,6 @@ public partial class ViajeAgregarViewModel : BaseViewModel
         CargarLugaresCommand.Execute(null);
     }
 
-
     [RelayCommand]
     private async Task Cancelar()
     {
@@ -42,6 +40,17 @@ public partial class ViajeAgregarViewModel : BaseViewModel
     [RelayCommand]
     private async Task GrabarViaje()
     {
+        if(FechaArribo<FechaSalida)
+        {
+            await Application.Current.MainPage.DisplayAlert("O.o", "La fecha de llegada no debe ser anterior a la fecha de salida", "Aceptar");
+            return;
+        }
+        if (HoraLlegada <= HoraSalida)
+        {
+            await Application.Current.MainPage.DisplayAlert("O.o", "La hora de llegada debe ser superior a la hora de salida", "Aceptar");
+            return;
+        }
+
         var registro = new ViajeDTO
         {
             IdOrigen = OrigenSeleccionado?.IdLugar ?? 0,
@@ -53,7 +62,6 @@ public partial class ViajeAgregarViewModel : BaseViewModel
             ActivoDesde = DateTime.Now,
             Estado = true
         };
-
         try
         {
             await _viajeService.CrearViaje(registro);
@@ -86,7 +94,6 @@ public partial class ViajeAgregarViewModel : BaseViewModel
             var lugaresFiltrados = LugaresFiltrados
                 .Where(l => l.Ciudad.ToLower().Contains(filtro) || l.Provincia.ToLower().Contains(filtro))
                 .ToList();
-
             LugaresFiltrados = new ObservableCollection<Lugar>(lugaresFiltrados);
         }
     }

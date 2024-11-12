@@ -1,7 +1,6 @@
 using rootear.mvvm.Models;
-using rootear.Services;
 using rootear.mvvm.ViewModels;
-using Microsoft.Maui.Controls;
+using rootear.Services;
 
 namespace rootear.mvvm.Views;
 
@@ -25,7 +24,7 @@ public partial class ViajeDetallePage : ContentPage
         var destinoCiudad = ((ViajeDetalleViewModel)BindingContext).Viaje.Destino.Ciudad;
         // Configura la URL de Google Maps con los datos de origen y destino
         var mapsUrl = $"https://www.google.com/maps/dir/?api=1&origin={origenCiudad}&destination={destinoCiudad}&travelmode=driving";
-         // Cargar la URL en el WebView
+        // Cargar la URL en el WebView
         mapWebView.Source = mapsUrl;
     }
 }

@@ -6,8 +6,8 @@ namespace rootear.mvvm.Views;
 
 public partial class UsuarioModificarPage : ContentPage
 {
-	public UsuarioModificarPage()
-	{
+    public UsuarioModificarPage()
+    {
         InitializeComponent();
         UsuarioService service = new UsuarioService();
         UsuarioModificarViewModel vm = new UsuarioModificarViewModel(service);

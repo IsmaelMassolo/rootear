@@ -1,17 +1,14 @@
-﻿using rootear.mvvm.Models;
-using rootear.Services;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using System.Collections.ObjectModel;
-using rootear.mvvm.Models.DTO;
+using rootear.mvvm.Models;
 using rootear.mvvm.Views;
+using rootear.Services;
+using System.Collections.ObjectModel;
 
 namespace rootear.mvvm.ViewModels;
 
 public partial class ReservaViewModel : BaseViewModel
 {
-    //[ObservableProperty] Reserva reserva;
-    //[ObservableProperty] private DetalleReserva _viajesEnReserva;
     [ObservableProperty] private ObservableCollection<Viaje> viajesFiltrados = new();
     [ObservableProperty] bool isRefreshing;
     [ObservableProperty] Viaje viajeSeleccionado;
@@ -32,12 +29,7 @@ public partial class ReservaViewModel : BaseViewModel
             if (viajes != null)
             {
                 viajesFiltrados.Clear();
-
-                foreach (var viaje in viajes)
-                {
-                    viajesFiltrados.Add(viaje);
-
-                }
+                foreach (var viaje in viajes) { viajesFiltrados.Add(viaje); }
             }
         }
         catch (Exception exception)
@@ -59,7 +51,6 @@ public partial class ReservaViewModel : BaseViewModel
     [RelayCommand]
     private async Task GoToMainPage()
     {
-        // Navegar a MainPage
         await Application.Current.MainPage.Navigation.PushAsync(new MainPage());
     }
 
@@ -68,5 +59,4 @@ public partial class ReservaViewModel : BaseViewModel
     {
         await Application.Current.MainPage.Navigation.PushAsync(new ViajeListaPage());
     }
-
 }

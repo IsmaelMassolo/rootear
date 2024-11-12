@@ -9,7 +9,6 @@ namespace rootear.mvvm.ViewModels
 {
     public partial class ReservaDetalleViewModel : BaseViewModel
     {
-
         [ObservableProperty] Viaje viaje;
         [ObservableProperty] DetalleReserva detalleReserva;
         IReservaService _reservaService;
@@ -22,13 +21,11 @@ namespace rootear.mvvm.ViewModels
             _viajeService = viajeService;
         }
 
-
         [RelayCommand]
         private async Task GoBack()
         {
             await Application.Current.MainPage.Navigation.PopAsync();
         }
-
 
         [RelayCommand]
         private async Task EliminarViajeAsync()
@@ -48,7 +45,6 @@ namespace rootear.mvvm.ViewModels
                     IdUsuario = Transport.IdUsuario
                 };
 
-                // Llamar al servicio para eliminar el viaje
                 var resultado = await _reservaService.EliminarViajeAsync(dto);
 
                 if (resultado)

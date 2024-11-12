@@ -1,20 +1,18 @@
-﻿using rootear.mvvm.Models;
-using rootear.Services;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using System.Collections.ObjectModel;
-using rootear.mvvm.Models.DTO;
+using rootear.mvvm.Models;
 using rootear.mvvm.Views;
+using rootear.Services;
+using System.Collections.ObjectModel;
 
 namespace rootear.mvvm.ViewModels
 {
     public partial class HistorialViewModel : BaseViewModel
     {
-        //[ObservableProperty] private DetalleReserva _viajesEnReserva;
         [ObservableProperty] private ObservableCollection<Viaje> viajesFiltrados = new();
-        [ObservableProperty] bool isRefreshing;
         [ObservableProperty] Viaje viajeSeleccionado;
         IHistorialService _historialService;
+        [ObservableProperty] bool isRefreshing;
 
         public HistorialViewModel(IHistorialService historialService)
         {
@@ -48,9 +46,7 @@ namespace rootear.mvvm.ViewModels
         [RelayCommand]
         private async Task GoToMainPage()
         {
-            // Navegar a MainPage
             await Application.Current.MainPage.Navigation.PushAsync(new MainPage());
         }
-
     }
 }

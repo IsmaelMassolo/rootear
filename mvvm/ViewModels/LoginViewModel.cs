@@ -1,8 +1,7 @@
-﻿using rootear.mvvm.Views;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using rootear.Services;
 using rootear.mvvm.Views;
+using rootear.Services;
 using rootear.Utils;
 
 namespace rootear.mvvm.ViewModels;
@@ -41,7 +40,6 @@ public partial class LoginViewModel : BaseViewModel
 
                     if (login != null)
                     {
-                        // Configurar datos del usuario logueado
                         Transport.IdUsuario = login.IdUsuario;
                         Transport.Nombre = login.Nombre;
                         Transport.Apellido = login.Apellido;

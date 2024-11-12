@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace rootear.mvvm.Models.DTO
+﻿namespace rootear.mvvm.Models.DTO
 {
     public class LoginDTO
     {

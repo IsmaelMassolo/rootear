@@ -26,11 +26,7 @@ namespace rootear.mvvm.ViewModels
         [RelayCommand]
         private async Task AgregarA_SalaReserva()
         {
-
-            if (viaje == null)
-            {
-                return;
-            }
+            if (viaje == null) { return; }
 
             DetalleReservaDTO nuevaReservaDTO = new DetalleReservaDTO
             {
@@ -41,11 +37,9 @@ namespace rootear.mvvm.ViewModels
             };
 
             var resultado = await _reservaService.AgregarA_DetalleReserva(nuevaReservaDTO);
-
             if (resultado == true)
             {
                 await Application.Current.MainPage.DisplayAlert("Si!", "Agregaste un nuevo viaje! que lo disfrutes!", "OK");
-
             }
             else
             {
@@ -59,6 +53,5 @@ namespace rootear.mvvm.ViewModels
         {
             await Application.Current.MainPage.Navigation.PopAsync();
         }
-
     }
 }
